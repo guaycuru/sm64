@@ -19,7 +19,7 @@
 /// player exits their activation radius.
 #define BUGFIX_PIRANHA_PLANT_STATE_RESET (0 || VERSION_US || VERSION_EU)
 /// Fixes bug where sleeping Piranha Plants damage players that bump into them
-#define BUGFIX_PIRANHA_PLANT_SLEEP_DAMAGE (0 || VERSION_US || VERSION_EU)
+#define BUGFIX_PIRANHA_PLANT_SLEEP_DAMAGE (0 || VERSION_US)
 /// Fixes bug where it shows a star when you grab a key in bowser battle stages
 #define BUGFIX_STAR_BOWSER_KEY (0 || VERSION_US || VERSION_EU)
 
@@ -29,10 +29,13 @@
 
 // Border Height Define for NTSC Versions
 #ifdef TARGET_N64
+# ifndef VERSION_EU
 #define BORDER_HEIGHT 8
+# else
+#define BORDER_HEIGHT 1
+# endif
 #else
 // What's the point of having a border?
 #define BORDER_HEIGHT 0
 #endif
 
-#endif
