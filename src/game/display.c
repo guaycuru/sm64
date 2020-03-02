@@ -225,7 +225,7 @@ void end_master_display_list(void) {
     create_task_structure();
 }
 
-void func_80247D84(void) {
+void draw_reset_bars(void) {
     s32 sp24;
     s32 sp20;
     s32 fbNum;
@@ -253,7 +253,7 @@ void func_80247D84(void) {
     osRecvMesg(&gGameVblankQueue, &D_80339BEC, OS_MESG_BLOCK);
 }
 
-void func_80247ED8(void) {
+void rendering_init(void) {
     gGfxPool = &gGfxPools[0];
     set_segment_base_addr(1, gGfxPool->buffer);
     gGfxSPTask = &gGfxPool->spTask;
@@ -268,7 +268,7 @@ void func_80247ED8(void) {
     gGlobalTimer++;
 }
 
-void func_80247FAC(void) {
+void config_gfx_pool(void) {
     gGfxPool = &gGfxPools[gGlobalTimer % GFX_NUM_POOLS];
     set_segment_base_addr(1, gGfxPool->buffer);
     gGfxSPTask = &gGfxPool->spTask;
