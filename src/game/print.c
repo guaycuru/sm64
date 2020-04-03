@@ -2,7 +2,7 @@
 
 #include "sm64.h"
 #include "gfx_dimensions.h"
-#include "game.h"
+#include "game_init.h"
 #include "mario.h"
 #include "memory.h"
 #include "save_file.h"

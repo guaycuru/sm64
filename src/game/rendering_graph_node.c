@@ -3,13 +3,12 @@
 #include "sm64.h"
 #include "gfx_dimensions.h"
 #include "main.h"
-#include "display.h"
 #include "print.h"
 #include "engine/math_util.h"
 #include "area.h"
 #include "shadow.h"
 #include "memory.h"
-#include "game.h"
+#include "game_init.h"
 #include "rendering_graph_node.h"
 
 /**
@@ -158,7 +157,7 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             gDPSetRenderMode(gDisplayListHead++, modeList->modes[i], mode2List->modes[i]);
             while (currList != NULL) {
                 gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(currList->transform),
-                          G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_LOAD);
+                          G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
                 gSPDisplayList(gDisplayListHead++, currList->displayList);
                 currList = currList->next;
             }
@@ -803,7 +802,7 @@ static void geo_process_object(struct Object *node) {
         if (node->header.gfx.throwMatrix != NULL) {
             mtxf_mul(gMatStack[gMatStackIndex + 1], (void *) node->header.gfx.throwMatrix,
                      gMatStack[gMatStackIndex]);
-        } else if (node->header.gfx.node.flags & 4) {
+        } else if (node->header.gfx.node.flags & GRAPH_RENDER_BILLBOARD) {
             mtxf_billboard(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex],
                            node->header.gfx.pos, gCurGraphNodeCamera->roll);
         } else {
