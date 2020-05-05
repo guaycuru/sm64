@@ -88,6 +88,10 @@ s32 get_credits_str_width(char *str) {
     return length;
 }
 
+#define CREDIT_TEXT_MARGIN_X ((s32)(GFX_DIMENSIONS_ASPECT_RATIO * 21))
+#define CREDIT_TEXT_X_LEFT GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(CREDIT_TEXT_MARGIN_X)
+#define CREDIT_TEXT_X_RIGHT GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(CREDIT_TEXT_MARGIN_X)
+
 /**
  * print_displaying_credits_entry: Print the current displaying Credits Entry
  * Called in render_game. This function checks if sDispCreditsEntry points to a
@@ -122,27 +126,27 @@ void print_displaying_credits_entry(void) {
 #endif
 
         dl_rgba16_begin_cutscene_msg_fade();
-        print_credits_str_ascii(28, strY, titleStr);
+        print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY, titleStr);
 
 #ifndef VERSION_JP
         switch (numLines) {
             case 4:
-                print_credits_str_ascii(28, strY + 24, *currStrPtr++);
+                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 24, *currStrPtr++);
                 numLines = 2;
                 lineHeight = 24;
                 break;
             case 5:
-                print_credits_str_ascii(28, strY + 16, *currStrPtr++);
+                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
                 numLines = 3;
                 break;
 #ifdef VERSION_EU
             case 6:
-                print_credits_str_ascii(28, strY + 32, *currStrPtr++);
+                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
                 numLines = 3;
                 break;
             case 7:
-                print_credits_str_ascii(28, strY + 16, *currStrPtr++);
-                print_credits_str_ascii(28, strY + 32, *currStrPtr++);
+                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
+                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
                 numLines = 3;
                 break;
 #endif
@@ -152,7 +156,7 @@ void print_displaying_credits_entry(void) {
         // smart dev here, thinking ahead for when the cosmic ray hits the rdram
         // chips 23 years later and nearly causes upwarp 2
         while (numLines-- > 0) {
-            print_credits_str_ascii((320 - 28) - get_credits_str_width(*currStrPtr), strY, *currStrPtr);
+            print_credits_str_ascii(CREDIT_TEXT_X_RIGHT - get_credits_str_width(*currStrPtr), strY, *currStrPtr);
 
 #ifdef VERSION_JP
             strY += 16;

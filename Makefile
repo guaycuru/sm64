@@ -79,6 +79,11 @@ ifeq ($(GRUCODE), f3dex2) # Fast3DEX2
   TARGET := $(TARGET).f3dex2
   COMPARE := 0
 else
+ifeq ($(GRUCODE), f3dex2e) # Fast3DEX2 Extended (for PC)
+  GRUCODE_CFLAGS := -DF3DEX_GBI_2E
+  TARGET := $(TARGET).f3dex2e
+  COMPARE := 0
+else
 ifeq ($(GRUCODE),f3d_new) # Fast3D 2.0H (Shindou)
   GRUCODE_CFLAGS := -DF3D_NEW
   GRUCODE_ASFLAGS := --defsym F3D_NEW=1
@@ -95,15 +100,16 @@ endif
 endif
 endif
 endif
-
-ifeq ($(TARGET_N64),0)
-  NON_MATCHING := 1
 endif
 
 ifeq ($(NON_MATCHING),1)
   VERSION_CFLAGS := $(VERSION_CFLAGS) -DNON_MATCHING -DAVOID_UB
   VERSION_ASFLAGS := --defsym AVOID_UB=1
   COMPARE := 0
+endif
+
+ifeq ($(TARGET_WEB),1)
+  VERSION_CFLAGS := $(VERSION_CFLAGS) -DTARGET_WEB
 endif
 
 ################### Universal Dependencies ###################
@@ -137,9 +143,26 @@ endif
 
 # BUILD_DIR is location where all build artifacts are placed
 BUILD_DIR_BASE := build
-BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
+ifeq ($(TARGET_N64),1)
+  BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
+else
+ifeq ($(TARGET_WEB),1)
+  BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)_web
+else
+  BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)_pc
+endif
+endif
 
 LIBULTRA := $(BUILD_DIR)/libultra.a
+ifeq ($(TARGET_WEB),1)
+EXE := $(BUILD_DIR)/$(TARGET).html
+else
+ifeq ($(WINDOWS_BUILD),1)
+EXE := $(BUILD_DIR)/$(TARGET).exe
+else
+EXE := $(BUILD_DIR)/$(TARGET)
+endif
+endif
 ROM := $(BUILD_DIR)/$(TARGET).z64
 ELF := $(BUILD_DIR)/$(TARGET).elf
 LD_SCRIPT := sm64.ld
@@ -151,7 +174,13 @@ LEVEL_DIRS := $(patsubst levels/%,%,$(dir $(wildcard levels/*/header.h)))
 
 # Directories containing source files
 SRC_DIRS := src src/engine src/game src/audio src/menu src/buffers actors levels bin data assets
-ASM_DIRS := asm lib
+ASM_DIRS := lib
+ifeq ($(TARGET_N64),1)
+  ASM_DIRS := asm $(ASM_DIRS)
+else
+  SRC_DIRS := $(SRC_DIRS) src/pc src/pc/gfx src/pc/audio src/pc/controller
+  ASM_DIRS :=
+endif
 BIN_DIRS := bin bin/$(VERSION)
 
 ULTRA_SRC_DIRS := lib/src lib/src/math
@@ -220,6 +249,7 @@ SOUND_OBJ_FILES := $(SOUND_BIN_DIR)/sound_data.ctl.o \
 
 # Object files
 O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
+           $(foreach file,$(CXX_FILES),$(BUILD_DIR)/$(file:.cpp=.o)) \
            $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o)) \
            $(foreach file,$(GENERATED_C_FILES),$(file:.c=.o))
 
@@ -333,18 +363,24 @@ endif
 
 ###################### Dependency Check #####################
 
+ifeq ($(TARGET_N64),1)
 BINUTILS_VER_MAJOR := $(shell $(LD) --version | grep ^GNU | sed 's/^.* //; s/\..*//g')
 BINUTILS_VER_MINOR := $(shell $(LD) --version | grep ^GNU | sed 's/^[^.]*\.//; s/\..*//g')
 BINUTILS_DEPEND := $(shell expr $(BINUTILS_VER_MAJOR) \>= 2 \& $(BINUTILS_VER_MINOR) \>= 27)
 ifeq ($(BINUTILS_DEPEND),0)
 $(error binutils version 2.27 required, version $(BINUTILS_VER_MAJOR).$(BINUTILS_VER_MINOR) detected)
 endif
+endif
 
 ######################## Targets #############################
 
+ifeq ($(TARGET_N64),1)
 all: $(ROM)
 ifeq ($(COMPARE),1)
 	@$(SHA1SUM) -c $(TARGET).sha1 || (echo 'The build succeeded, but did not match the official ROM. This is expected if you are making changes to the game.\nTo silence this message, use "make COMPARE=0"'. && false)
+endif
+else
+all: $(EXE)
 endif
 
 clean:
@@ -444,6 +480,7 @@ $(BUILD_DIR)/%.ci4: %.ci4.png
 
 # compressed segment generation
 
+ifeq ($(TARGET_N64),1)
 # TODO: ideally this would be `-Trodata-segment=0x07000000` but that doesn't set the address
 
 $(BUILD_DIR)/bin/%.elf: $(BUILD_DIR)/bin/%.o
@@ -473,6 +510,7 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	printf ".section .data\n\n.incbin \"$<\"\n" > $@
+endif
 
 $(BUILD_DIR)/%.table: %.aiff
 	$(AIFF_EXTRACT_CODEBOOK) $< >$@
@@ -510,8 +548,30 @@ $(SOUND_BIN_DIR)/%.m64: $(SOUND_BIN_DIR)/%.o
 $(SOUND_BIN_DIR)/%.o: $(SOUND_BIN_DIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
+ifeq ($(TARGET_N64),1)
 $(SOUND_BIN_DIR)/%.s: $(SOUND_BIN_DIR)/%
 	printf ".section .data\n\n.incbin \"$<\"\n" > $@
+else
+$(SOUND_BIN_DIR)/sound_data.ctl.c: $(SOUND_BIN_DIR)/sound_data.ctl
+	echo "unsigned char gSoundDataADSR[] = {" > $@
+	hexdump -v -e '1/1 "0x%X,"' $< >> $@
+	echo "};" >> $@
+
+$(SOUND_BIN_DIR)/sound_data.tbl.c: $(SOUND_BIN_DIR)/sound_data.tbl
+	echo "unsigned char gSoundDataRaw[] = {" > $@
+	hexdump -v -e '1/1 "0x%X,"' $< >> $@
+	echo "};" >> $@
+
+$(SOUND_BIN_DIR)/sequences.bin.c: $(SOUND_BIN_DIR)/sequences.bin
+	echo "unsigned char gMusicData[] = {" > $@
+	hexdump -v -e '1/1 "0x%X,"' $< >> $@
+	echo "};" >> $@
+
+$(SOUND_BIN_DIR)/bank_sets.c: $(SOUND_BIN_DIR)/bank_sets
+	echo "unsigned char gBankSetsData[] = {" > $@
+	hexdump -v -e '1/1 "0x%X,"' $< >> $@
+	echo "};" >> $@
+endif
 
 $(BUILD_DIR)/levels/scripts.o: $(BUILD_DIR)/include/level_headers.h
 
@@ -578,6 +638,10 @@ $(GLOBAL_ASM_DEP).$(NON_MATCHING):
 	@rm -f $(GLOBAL_ASM_DEP).*
 	touch $@
 
+$(BUILD_DIR)/%.o: %.cpp
+ @$(CXX) -fsyntax-only $(CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+ $(CXX) -c $(CFLAGS) -o $@ $<
+
 $(BUILD_DIR)/%.o: %.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
@@ -590,6 +654,7 @@ $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -MD $(BUILD_DIR)/$*.d -o $@ $<
 
+ifeq ($(TARGET_N64),1)
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(CPP) $(VERSION_CFLAGS) -MMD -MP -MT $@ -MF $@.d -I include/ -I . -DBUILD_DIR=$(BUILD_DIR) -o $@ $<
 
@@ -609,6 +674,11 @@ $(ROM): $(ELF)
 
 $(BUILD_DIR)/$(TARGET).objdump: $(ELF)
 	$(OBJDUMP) -D $< > $@
+
+else
+$(EXE): $(O_FILES) $(MIO0_FILES:.mio0=.o) $(SOUND_OBJ_FILES) $(ULTRA_O_FILES) $(GODDARD_O_FILES)
+ $(LD) -L $(BUILD_DIR) -o $@ $(O_FILES) $(SOUND_OBJ_FILES) $(ULTRA_O_FILES) $(GODDARD_O_FILES) $(LDFLAGS)
+endif
 
 
 

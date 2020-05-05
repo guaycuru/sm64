@@ -1,6 +1,7 @@
 #include <ultra64.h>
 
 #include "sm64.h"
+#include "gfx_dimensions.h"
 #include "memory.h"
 #include "types.h"
 #include "audio/external.h"
@@ -2108,8 +2109,17 @@ void change_dialog_camera_angle(void) {
 }
 
 void shade_screen(void) {
-    create_dl_translation_matrix(MENU_MTX_PUSH, 0, 240.0f, 0);
+    create_dl_translation_matrix(MENU_MTX_PUSH, GFX_DIMENSIONS_FROM_LEFT_EDGE(0), 240.0f, 0);
+
+    // This is a bit weird. It reuses the dialog text box (width 130, height -80),
+    // so scale to at least fit the screen.
+#ifdef TARGET_N64
     create_dl_scale_matrix(MENU_MTX_NOPUSH, 2.6f, 3.4f, 1.0f);
+#else
+    create_dl_scale_matrix(MENU_MTX_NOPUSH,
+                           GFX_DIMENSIONS_ASPECT_RATIO * SCREEN_HEIGHT / 130.0f, 3.0f, 1.0f);
+#endif
+
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 110);
     gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -2145,7 +2155,7 @@ void render_pause_red_coins(void) {
     s8 x;
 
     for (x = 0; x < gRedCoinsCollected; x++) {
-        print_animated_red_coin(290 - x * 20, 16);
+        print_animated_red_coin(GFX_DIMENSIONS_FROM_RIGHT_EDGE(30) - x * 20, 16);
     }
 }
 
@@ -2437,7 +2447,8 @@ void print_hud_pause_colorful_str(void) {
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
 #ifdef VERSION_EU
-    print_hud_lut_string(HUD_LUT_GLOBAL, get_str_x_pos_from_center_scale(160, textPause, 12.0f), 81, textPause);
+    print_hud_lut_string(HUD_LUT_GLOBAL, get_str_x_pos_from_center_scale(
+                         SCREEN_WIDTH / 2, textPause, 12.0f), 81, textPause);
 #else
     print_hud_lut_string(HUD_LUT_GLOBAL, 123, 81, textPause);
 #endif

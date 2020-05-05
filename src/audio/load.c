@@ -902,6 +902,7 @@ void audio_init() {
         ((u64 *) gAudioHeap)[i] = 0;
     }
 
+#ifndef AVOID_UB
     i = 0;
     lim3 = ((uintptr_t) &gAudioGlobalsEndMarker - (uintptr_t) &gAudioGlobalsStartMarker) / 8;
     ptr64 = &gAudioGlobalsStartMarker - 1;
