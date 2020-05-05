@@ -1,12 +1,13 @@
 #include <ultra64.h>
 
 #include "sm64.h"
+#include "gfx_dimensions.h"
 #include "audio/external.h"
 #include "buffers/buffers.h"
 #include "buffers/gfx_output_buffer.h"
 #include "buffers/framebuffers.h"
 #include "buffers/zbuffer.h"
-#include "engine/level_script.h"
+#include "engine/level_script.h" 
 #include "game_init.h"
 #include "main.h"
 #include "memory.h"
@@ -124,8 +125,9 @@ void clear_z_buffer(void) {
     gDPSetFillColor(gDisplayListHead++,
                     GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
 
-    gDPFillRectangle(gDisplayListHead++, 0, BORDER_HEIGHT, SCREEN_WIDTH - 1,
-                     SCREEN_HEIGHT - 1 - BORDER_HEIGHT);
+    gDPFillRectangle(gDisplayListHead++,
+                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
+                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - BORDER_HEIGHT - 1);
 }
 
 /** Sets up the final framebuffer image. */
@@ -159,8 +161,13 @@ void clear_frame_buffer(s32 a) {
 void clear_viewport(Vp *viewport, s32 b) {
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
     s16 vpUly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
-    s16 VpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 2;
+    s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 2;
     s16 vpLry = (viewport->vp.vtrans[1] + viewport->vp.vscale[1]) / 4 - 2;
+	
+#ifndef TARGET_N64
+    vpUlx = GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(vpUlx);
+    vpLrx = GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(SCREEN_WIDTH - vpLrx);
+#endif
 
     gDPPipeSync(gDisplayListHead++);
 
@@ -168,7 +175,7 @@ void clear_viewport(Vp *viewport, s32 b) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
     gDPSetFillColor(gDisplayListHead++, b);
-    gDPFillRectangle(gDisplayListHead++, vpUlx, vpUly, VpLrx, vpLry);
+    gDPFillRectangle(gDisplayListHead++, vpUlx, vpUly, vpLrx, vpLry);
 
     gDPPipeSync(gDisplayListHead++);
 
@@ -186,9 +193,11 @@ void draw_screen_borders(void) {
     gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(0, 0, 0, 0) << 16 | GPACK_RGBA5551(0, 0, 0, 0));
 
 #if BORDER_HEIGHT != 0
-    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1, BORDER_HEIGHT - 1);
-    gDPFillRectangle(gDisplayListHead++, 0, SCREEN_HEIGHT - BORDER_HEIGHT, SCREEN_WIDTH - 1,
-                     SCREEN_HEIGHT - 1);
+    gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
+                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, BORDER_HEIGHT - 1);
+    gDPFillRectangle(gDisplayListHead++,
+                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), SCREEN_HEIGHT - BORDER_HEIGHT,
+                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 1);
 #endif
 }
 
@@ -212,11 +221,13 @@ void create_task_structure(void) {
     gGfxSPTask->msgqueue = &D_80339CB8;
     gGfxSPTask->msg = (OSMesg) 2;
     gGfxSPTask->task.t.type = M_GFXTASK;
+#if TARGET_N64
     gGfxSPTask->task.t.ucode_boot = rspF3DBootStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspF3DBootEnd - (u8 *) rspF3DBootStart);
     gGfxSPTask->task.t.flags = 0;
     gGfxSPTask->task.t.ucode = rspF3DStart;
     gGfxSPTask->task.t.ucode_data = rspF3DDataStart;
+#endif
     gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE; // (this size is ignored)
     gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
     gGfxSPTask->task.t.dram_stack = (u64 *) gGfxSPTaskStack;
@@ -304,7 +315,7 @@ void rendering_init(void) {
 }
 
 void config_gfx_pool(void) {
-    gGfxPool = &gGfxPools[gGlobalTimer % 2];
+    gGfxPool = &gGfxPools[gGlobalTimer % GFX_NUM_POOLS];
     set_segment_base_addr(1, gGfxPool->buffer);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->buffer;

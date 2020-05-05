@@ -47,7 +47,7 @@ void load_engine_code_segment(void);
 #define load_segment(...)
 #define load_to_fixed_pool_addr(...)
 #define load_segment_decompress(...)
-#define func_80278304(...)
+#define load_segment_decompress_heap(...)
 #define load_engine_code_segment(...)
 #endif
 
