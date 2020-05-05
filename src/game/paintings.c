@@ -1059,18 +1059,18 @@ void reset_painting(struct Painting *painting) {
     // Make sure all variables are reset correctly.
     // On N64 the segments that contain the relevant
     // Painting structs are reloaded from ROM upon level load.
-    painting->rippleStatus = RIPPLE_STATE_NONE;
+    painting->state = 0;
     painting->currRippleMag = 0.0f;
-    painting->rippleMagMultiplier = 1.0f;
+    painting->rippleDecay = 1.0f;
     painting->currRippleRate = 0.0f;
     painting->dispersionFactor = 0.0f;
     painting->rippleTimer = 0.0f;
-    painting->horizontalRippleSpot = 0.0f;
-    painting->verticalRippleSpot = 0.0f;
+    painting->rippleX = 0.0f;
+    painting->rippleY = 0.0f;
     if (painting == &ddd_painting) {
         // Move DDD painting to initial position, in case the animation
         // that moves the painting stops during level unload.
-        painting->vXPos = 3456.0f;
+        painting->posX = 3456.0f;
     }
 #endif
 }

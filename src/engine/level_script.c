@@ -23,7 +23,6 @@
 #include "math_util.h"
 #include "surface_collision.h"
 #include "surface_load.h"
-#include "game/game.h"
 #include "level_table.h"
 
 #define CMD_SIZE_SHIFT (sizeof(void *) >> 3)

@@ -53,7 +53,7 @@ void set_vblank_handler(s32 index, struct VblankHandler *handler, OSMesgQueue *q
 
 static uint8_t inited = 0;
 
-#include "game/display.h" // for gGlobalTimer
+#include "game/game_init.h" // for gGlobalTimer
 void send_display_list(struct SPTask *spTask) {
     if (!inited) {
         return;
