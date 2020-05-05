@@ -525,6 +525,7 @@ static void func_8031D838(s32 player, FadeT fadeInTime, u8 targetVolume) {
     seqPlayer->fadeTimer = fadeInTime;
 }
 
+#ifdef TARGET_N64
 struct SPTask *create_next_audio_frame_task(void) {
     u32 samplesRemainingInAI;
     s32 writtenCmds;
@@ -628,6 +629,22 @@ struct SPTask *create_next_audio_frame_task(void) {
     decrease_sample_dma_ttls();
     return gAudioTask;
 }
+#else
+struct SPTask *create_next_audio_frame_task(void) {
+    return NULL;
+}
+void create_next_audio_buffer(s16 *samples, u32 num_samples) {
+    gAudioFrameCount++;
+    if (sGameLoopTicked != 0) {
+        update_game_sound();
+        sGameLoopTicked = 0;
+    }
+    s32 writtenCmds;
+    synthesis_execute(gAudioCmdBuffers[0], &writtenCmds, samples, num_samples);
+    gAudioRandom = ((gAudioRandom + gAudioFrameCount) * gAudioFrameCount);
+    decrease_sample_dma_ttls();
+}
+#endif
 
 void play_sound(s32 soundBits, f32 *pos) {
     sSoundRequests[sSoundRequestCount].soundBits = soundBits;

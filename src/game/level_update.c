@@ -937,14 +937,18 @@ void basic_update(UNUSED s16 *arg) {
     }
 }
 
+extern void print_intro_text2(void);
+int gPressedStart = 0;
+
 s32 play_mode_normal(void) {
     if (gCurrDemoInput != NULL) {
-        print_intro_text();
+        print_intro_text2();
         if (gPlayer1Controller->buttonPressed & END_DEMO) {
             level_trigger_warp(gMarioState,
                                gCurrLevelNum == LEVEL_PSS ? WARP_OP_DEMO_END : WARP_OP_DEMO_NEXT);
         } else if (!gWarpTransition.isActive && sDelayedWarpOp == WARP_OP_NONE
                    && (gPlayer1Controller->buttonPressed & START_BUTTON)) {
+            gPressedStart = 1;
             level_trigger_warp(gMarioState, WARP_OP_DEMO_NEXT);
         }
     }

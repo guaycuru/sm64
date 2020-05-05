@@ -4,7 +4,7 @@
 
 #include "sm64.h"
 
-#ifdef VERSION_EU
+#if defined(TARGET_N64) && defined(VERSION_EU)
 
 s32 _Printf(char *(*prout)(char *, const char *, size_t), char *dst, const char *fmt, va_list args);
 

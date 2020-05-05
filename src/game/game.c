@@ -290,10 +290,16 @@ void setup_game_memory(void) {
     load_segment_decompress(2, _segment2_mio0SegmentRomStart, _segment2_mio0SegmentRomEnd);
 }
 
+#ifndef TARGET_N64
+static struct LevelCommand *levelCommandAddr;
+#endif
+
 // main game loop thread. runs forever as long as the game
 // continues.
 void thread5_game_loop(UNUSED void *arg) {
-    struct LevelCommand *addr;
+#ifdef TARGET_N64
+    struct LevelCommand *levelCommandAddr;
+#endif
 
     setup_game_memory();
     init_controllers();
@@ -301,18 +307,30 @@ void thread5_game_loop(UNUSED void *arg) {
 
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) 1);
 
-    // point addr to the entry point into the level script data.
-    addr = segmented_to_virtual(level_script_entry);
+    // point levelCommandAddr to the entry point into the level script data.
+    levelCommandAddr = segmented_to_virtual(level_script_entry);
 
     play_music(2, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
     set_sound_mode(save_file_get_sound_mode());
+
+#ifdef TARGET_N64
     func_80247ED8();
 
     while (1) {
+#else
+    gGlobalTimer++;
+}
+
+void game_loop_one_iteration(void) {
+#endif
         // if the reset timer is active, run the process to reset the game.
         if (gResetTimer) {
             func_80247D84();
+#ifdef TARGET_N64
             continue;
+#else
+            return;
+#endif
         }
         profiler_log_thread5_time(THREAD5_START);
 
@@ -325,7 +343,7 @@ void thread5_game_loop(UNUSED void *arg) {
         audio_game_loop_tick();
         func_80247FAC();
         read_controller_inputs();
-        addr = level_script_execute(addr);
+        levelCommandAddr = level_script_execute(levelCommandAddr);
         display_and_vsync();
 
         // when debug info is enabled, print the "BUF %d" information.
@@ -334,5 +352,7 @@ void thread5_game_loop(UNUSED void *arg) {
             // amount of free space remaining.
             print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8 *) gDisplayListHead);
         }
+#ifdef TARGET_N64
     }
+#endif
 }

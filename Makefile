@@ -19,6 +19,20 @@ COMPARE ?= 1
 NON_MATCHING ?= 0
 # Build for the N64 (turn this off for ports)
 TARGET_N64 ?= 1
+# Build for Emscripten/WebGL
+TARGET_WEB ?= 0
+
+# Automatic settings only for ports
+ifeq ($(TARGET_N64),0)
+  NON_MATCHING := 1
+  GRUCODE := f3dex2e
+  WINDOWS_BUILD := 0
+  ifeq ($(TARGET_WEB),0)
+    ifeq ($(OS),Windows_NT)
+      WINDOWS_BUILD := 1
+    endif
+  endif
+endif
 
 # Release
 
@@ -63,6 +77,11 @@ ifeq ($(GRUCODE), f3dex2) # Fast3DEX2
   TARGET := $(TARGET).f3dex2
   COMPARE := 0
 else
+ifeq ($(GRUCODE), f3dex2e) # Fast3DEX2 Extended (for PC)
+  GRUCODE_CFLAGS := -DF3DEX_GBI_2E
+  TARGET := $(TARGET).f3dex2e
+  COMPARE := 0
+else
 ifeq ($(GRUCODE),f3d_new) # Fast3D 2.0H (Shindou)
   GRUCODE_CFLAGS := -DF3D_NEW
   GRUCODE_ASFLAGS := --defsym F3D_NEW=1
@@ -79,14 +98,15 @@ endif
 endif
 endif
 endif
-
-ifeq ($(TARGET_N64),0)
-  NON_MATCHING := 1
 endif
 
 ifeq ($(NON_MATCHING),1)
   VERSION_CFLAGS := $(VERSION_CFLAGS) -DNON_MATCHING -DAVOID_UB
   COMPARE := 0
+endif
+
+ifeq ($(TARGET_WEB),1)
+  VERSION_CFLAGS := $(VERSION_CFLAGS) -DTARGET_WEB
 endif
 
 ################### Universal Dependencies ###################
@@ -120,9 +140,26 @@ endif
 
 # BUILD_DIR is location where all build artifacts are placed
 BUILD_DIR_BASE := build
-BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
+ifeq ($(TARGET_N64),1)
+  BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
+else
+ifeq ($(TARGET_WEB),1)
+  BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)_web
+else
+  BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)_pc
+endif
+endif
 
 LIBULTRA := $(BUILD_DIR)/libultra.a
+ifeq ($(TARGET_WEB),1)
+EXE := $(BUILD_DIR)/$(TARGET).html
+else
+ifeq ($(WINDOWS_BUILD),1)
+EXE := $(BUILD_DIR)/$(TARGET).exe
+else
+EXE := $(BUILD_DIR)/$(TARGET)
+endif
+endif
 ROM := $(BUILD_DIR)/$(TARGET).z64
 ELF := $(BUILD_DIR)/$(TARGET).elf
 LD_SCRIPT := sm64.ld
@@ -134,7 +171,13 @@ LEVEL_DIRS := $(patsubst levels/%,%,$(dir $(wildcard levels/*/header.h)))
 
 # Directories containing source files
 SRC_DIRS := src src/engine src/game src/audio src/menu src/buffers actors levels bin data assets
-ASM_DIRS := asm lib
+ASM_DIRS := lib
+ifeq ($(TARGET_N64),1)
+  ASM_DIRS := asm $(ASM_DIRS)
+else
+  SRC_DIRS := $(SRC_DIRS) src/pc src/pc/gfx src/pc/audio src/pc/controller
+  ASM_DIRS :=
+endif
 BIN_DIRS := bin bin/$(VERSION)
 
 ULTRA_SRC_DIRS := lib/src lib/src/math
@@ -152,17 +195,83 @@ else
   OPT_FLAGS := -g
 endif
 
+ifeq ($(TARGET_WEB),1)
+  OPT_FLAGS := -O2 -g4 --source-map-base http://localhost:8080/
+endif
+
 # File dependencies and variables for specific files
 include Makefile.split
 
 # Source code files
 LEVEL_C_FILES := $(wildcard levels/*/leveldata.c) $(wildcard levels/*/script.c) $(wildcard levels/*/geo.c)
 C_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)) $(LEVEL_C_FILES)
+CXX_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.cpp))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
 ULTRA_C_FILES := $(foreach dir,$(ULTRA_SRC_DIRS),$(wildcard $(dir)/*.c))
 GODDARD_C_FILES := $(foreach dir,$(GODDARD_SRC_DIRS),$(wildcard $(dir)/*.c))
-ULTRA_S_FILES := $(foreach dir,$(ULTRA_ASM_DIRS),$(wildcard $(dir)/*.s))
-GENERATED_C_FILES := $(BUILD_DIR)/assets/mario_anim_data.c $(BUILD_DIR)/assets/demo_data.c
+ifeq ($(TARGET_N64),1)
+  ULTRA_S_FILES := $(foreach dir,$(ULTRA_ASM_DIRS),$(wildcard $(dir)/*.s))
+endif
+GENERATED_C_FILES := $(BUILD_DIR)/assets/mario_anim_data.c $(BUILD_DIR)/assets/demo_data.c \
+  $(addprefix $(BUILD_DIR)/bin/,$(addsuffix _skybox.c,$(notdir $(basename $(wildcard textures/skyboxes/*.png)))))
+
+ifeq ($(WINDOWS_BUILD),0)
+  CXX_FILES :=
+endif
+
+ifneq ($(TARGET_N64),1)
+  ULTRA_C_FILES_SKIP := \
+    sqrtf.c \
+    string.c \
+    sprintf.c \
+    _Printf.c \
+    kdebugserver.c \
+    osInitialize.c \
+    osCreateThread.c \
+    osDestroyThread.c \
+    osStartThread.c \
+    osSetThreadPri.c \
+    osPiStartDma.c \
+    osPiRawStartDma.c \
+    osPiRawReadIo.c \
+    osPiGetCmdQueue.c \
+    osJamMesg.c \
+    osSendMesg.c \
+    osRecvMesg.c \
+    osSetEventMesg.c \
+    osTimer.c \
+    osSetTimer.c \
+    osSetTime.c \
+    osCreateViManager.c \
+    osViSetSpecialFeatures.c \
+    osVirtualToPhysical.c \
+    osViBlack.c \
+    osViSetEvent.c \
+    osViSetMode.c \
+    osViSwapBuffer.c \
+    osSpTaskLoadGo.c \
+    osCreatePiManager.c \
+    osGetTime.c \
+    osEepromProbe.c \
+    osEepromWrite.c \
+    osEepromLongWrite.c \
+    osEepromRead.c \
+    osEepromLongRead.c \
+    osContInit.c \
+    osContStartReadData.c \
+    osAiGetLength.c \
+    osAiSetFrequency.c \
+    osAiSetNextBuffer.c \
+    __osViInit.c \
+    __osSyncPutChars.c \
+    __osAtomicDec.c \
+    __osSiRawStartDma.c \
+    __osViSwapContext.c \
+    __osViGetCurrentContext.c
+
+  C_FILES := $(filter-out src/game/main.c,$(C_FILES))
+  ULTRA_C_FILES := $(filter-out $(addprefix lib/src/,$(ULTRA_C_FILES_SKIP)),$(ULTRA_C_FILES))
+endif
 
 SOUND_BANK_FILES := $(wildcard sound/sound_banks/*.json)
 SOUND_SEQUENCE_FILES := $(wildcard sound/sequences/$(VERSION)/*.m64) \
@@ -181,6 +290,7 @@ SOUND_OBJ_FILES := $(SOUND_BIN_DIR)/sound_data.ctl.o \
 
 # Object files
 O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
+           $(foreach file,$(CXX_FILES),$(BUILD_DIR)/$(file:.cpp=.o)) \
            $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o)) \
            $(foreach file,$(GENERATED_C_FILES),$(file:.c=.o))
 
@@ -193,14 +303,20 @@ GODDARD_O_FILES := $(foreach file,$(GODDARD_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 DEP_FILES := $(O_FILES:.o=.d) $(ULTRA_O_FILES:.o=.d) $(GODDARD_O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 
 # Files with GLOBAL_ASM blocks
+ifneq ($(NON_MATCHING),1)
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/audio/*.c) $(wildcard src/game/*.c)
 GLOBAL_ASM_O_FILES = $(foreach file,$(GLOBAL_ASM_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_DEP = $(BUILD_DIR)/src/audio/non_matching_dep
+endif
 
 # Segment elf files
 SEG_FILES := $(SEGMENT_ELF_FILES) $(ACTOR_ELF_FILES) $(LEVEL_ELF_FILES)
 
 ##################### Compiler Options #######################
+INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
+ENDIAN_BITWIDTH := $(BUILD_DIR)/endian-and-bitwidth
+
+ifeq ($(TARGET_N64),1)
 IRIX_ROOT := tools/ido5.3_compiler
 
 ifeq ($(shell type mips-linux-gnu-ld >/dev/null 2>/dev/null; echo $$?), 0)
@@ -231,8 +347,6 @@ ifeq ($(TARGET_N64),1)
   CC_CFLAGS := -fno-builtin
 endif
 
-INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
-
 # Check code syntax with host compiler
 CC_CHECK := gcc -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -Wall -Wextra -Wno-format-security -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
 
@@ -249,6 +363,50 @@ ifeq ($(shell getconf LONG_BIT), 32)
 else
   # Ensure that gcc treats the code as 32-bit
   CC_CHECK += -m32
+endif
+
+else # TARGET_N64
+
+AS := as
+ifneq ($(TARGET_WEB),1)
+  CC := gcc
+  CXX := g++
+else
+  CC := emcc
+endif
+ifeq ($(WINDOWS_BUILD),1)
+  LD := $(CXX)
+else
+  LD := $(CC)
+endif
+CPP := cpp -P
+OBJDUMP := objdump
+OBJCOPY := objcopy
+PYTHON := python3
+
+ifeq ($(WINDOWS_BUILD),1)
+CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) `sdl2-config --cflags`
+CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv `sdl2-config --cflags`
+else ifeq ($(TARGET_WEB),1)
+CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -s USE_SDL=2
+CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -s USE_SDL=2
+else
+CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) `pkg-config --cflags libusb-1.0 glfw3` `sdl2-config --cflags`
+CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv `pkg-config --cflags libusb-1.0 glfw3` `sdl2-config --cflags`
+endif
+
+ASFLAGS := -I include -I $(BUILD_DIR) $(VERSION_ASFLAGS)
+
+ifeq ($(TARGET_WEB),1)
+LDFLAGS := -lm -lGL -lSDL2 -no-pie -s TOTAL_MEMORY=20MB -g4 --source-map-base http://localhost:8080/ -s "EXTRA_EXPORTED_RUNTIME_METHODS=['callMain']"
+else
+ifeq ($(WINDOWS_BUILD),1)
+LDFLAGS := -lm -no-pie src/pc/gfx/dxsdk/`cat $(ENDIAN_BITWIDTH) | tr ' ' '\n' | tail -1`/*.lib -lxinput9_1_0 -lOle32 -static -mwindows
+else
+LDFLAGS := -lm -lGL `sdl2-config --libs` -no-pie -lpthread `pkg-config --libs libusb-1.0 glfw3` -lasound -lX11 -lXrandr -lpulse
+endif
+endif
+
 endif
 
 ####################### Other Tools #########################
@@ -273,18 +431,24 @@ SHA1SUM = sha1sum
 
 ###################### Dependency Check #####################
 
+ifeq ($(TARGET_N64),1)
 BINUTILS_VER_MAJOR := $(shell $(LD) --version | grep ^GNU | sed 's/^.* //; s/\..*//g')
 BINUTILS_VER_MINOR := $(shell $(LD) --version | grep ^GNU | sed 's/^[^.]*\.//; s/\..*//g')
 BINUTILS_DEPEND := $(shell expr $(BINUTILS_VER_MAJOR) \>= 2 \& $(BINUTILS_VER_MINOR) \>= 27)
 ifeq ($(BINUTILS_DEPEND),0)
 $(error binutils version 2.27 required, version $(BINUTILS_VER_MAJOR).$(BINUTILS_VER_MINOR) detected)
 endif
+endif
 
 ######################## Targets #############################
 
+ifeq ($(TARGET_N64),1)
 all: $(ROM)
 ifeq ($(COMPARE),1)
 	@$(SHA1SUM) -c $(TARGET).sha1 || (echo 'The build succeeded, but did not match the official ROM. This is expected if you are making changes to the game.\nTo silence this message, use "make COMPARE=0"'. && false)
+endif
+else
+all: $(EXE)
 endif
 
 clean:
@@ -366,6 +530,7 @@ $(BUILD_DIR)/%.ci4: %.ci4.png
 
 # compressed segment generation
 
+ifeq ($(TARGET_N64),1)
 # TODO: ideally this would be `-Trodata-segment=0x07000000` but that doesn't set the address
 
 $(BUILD_DIR)/bin/%.elf: $(BUILD_DIR)/bin/%.o
@@ -395,6 +560,7 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	printf ".section .data\n\n.incbin \"$<\"\n" > $@
+endif
 
 $(BUILD_DIR)/%.table: %.aiff
 	$(AIFF_EXTRACT_CODEBOOK) $< >$@
@@ -427,8 +593,30 @@ $(SOUND_BIN_DIR)/%.m64: $(SOUND_BIN_DIR)/%.o
 $(SOUND_BIN_DIR)/%.o: $(SOUND_BIN_DIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
+ifeq ($(TARGET_N64),1)
 $(SOUND_BIN_DIR)/%.s: $(SOUND_BIN_DIR)/%
 	printf ".section .data\n\n.incbin \"$<\"\n" > $@
+else
+$(SOUND_BIN_DIR)/sound_data.ctl.c: $(SOUND_BIN_DIR)/sound_data.ctl
+	echo "unsigned char gSoundDataADSR[] = {" > $@
+	hexdump -v -e '1/1 "0x%X,"' $< >> $@
+	echo "};" >> $@
+
+$(SOUND_BIN_DIR)/sound_data.tbl.c: $(SOUND_BIN_DIR)/sound_data.tbl
+	echo "unsigned char gSoundDataRaw[] = {" > $@
+	hexdump -v -e '1/1 "0x%X,"' $< >> $@
+	echo "};" >> $@
+
+$(SOUND_BIN_DIR)/sequences.bin.c: $(SOUND_BIN_DIR)/sequences.bin
+	echo "unsigned char gMusicData[] = {" > $@
+	hexdump -v -e '1/1 "0x%X,"' $< >> $@
+	echo "};" >> $@
+
+$(SOUND_BIN_DIR)/bank_sets.c: $(SOUND_BIN_DIR)/bank_sets
+	echo "unsigned char gBankSetsData[] = {" > $@
+	hexdump -v -e '1/1 "0x%X,"' $< >> $@
+	echo "};" >> $@
+endif
 
 $(BUILD_DIR)/levels/scripts.o: $(BUILD_DIR)/include/level_headers.h
 
@@ -472,6 +660,10 @@ $(GLOBAL_ASM_DEP).$(NON_MATCHING):
 	@rm -f $(GLOBAL_ASM_DEP).*
 	touch $@
 
+$(BUILD_DIR)/%.o: %.cpp
+ @$(CXX) -fsyntax-only $(CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+ $(CXX) -c $(CFLAGS) -o $@ $<
+
 $(BUILD_DIR)/%.o: %.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
@@ -484,6 +676,7 @@ $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -MD $(BUILD_DIR)/$*.d -o $@ $<
 
+ifeq ($(TARGET_N64),1)
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(CPP) $(VERSION_CFLAGS) -MMD -MP -MT $@ -MF $@.d -I include/ -I . -DBUILD_DIR=$(BUILD_DIR) -o $@ $<
 
@@ -503,6 +696,11 @@ $(ROM): $(ELF)
 
 $(BUILD_DIR)/$(TARGET).objdump: $(ELF)
 	$(OBJDUMP) -D $< > $@
+
+else
+$(EXE): $(O_FILES) $(MIO0_FILES:.mio0=.o) $(SOUND_OBJ_FILES) $(ULTRA_O_FILES) $(GODDARD_O_FILES)
+ $(LD) -L $(BUILD_DIR) -o $@ $(O_FILES) $(SOUND_OBJ_FILES) $(ULTRA_O_FILES) $(GODDARD_O_FILES) $(LDFLAGS)
+endif
 
 
 

@@ -8,6 +8,10 @@
 #include "seqplayer.h"
 #include "external.h"
 
+#ifndef TARGET_N64
+#include "../pc/mixer.h"
+#endif
+
 #define DMEM_ADDR_TEMP 0x0
 #define DMEM_ADDR_UNCOMPRESSED_NOTE 0x180
 #define DMEM_ADDR_ADPCM_RESAMPLED 0x20

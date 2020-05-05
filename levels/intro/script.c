@@ -44,50 +44,34 @@ const LevelScript level_intro_entry_2[] = {
     INIT_LEVEL(),
     BLACKOUT(/*active*/ TRUE),
     FIXED_LOAD(/*loadAddr*/ _goddardSegmentStart, /*romStart*/ _goddardSegmentRomStart, /*romEnd*/ _goddardSegmentRomEnd),
-    LOAD_MARIO_HEAD(/*loadHeadID*/ REGULAR_FACE),
+    //LOAD_MARIO_HEAD(/*loadHeadID*/ REGULAR_FACE),
     LOAD_RAW(/*seg*/ 0x13, _behaviorSegmentRomStart, _behaviorSegmentRomEnd),
     LOAD_MIO0_TEXTURE(/*seg*/ 0x0A, _title_screen_bg_mio0SegmentRomStart, _title_screen_bg_mio0SegmentRomEnd),
     ALLOC_LEVEL_POOL(),
 
-    AREA(/*index*/ 1, intro_geo_00035C),
-    END_AREA(),
+    //AREA(/*index*/ 1, intro_geo_00035C),
+    //END_AREA(),
 
     FREE_LEVEL_POOL(),
     SLEEP(/*frames*/ 2),
     BLACKOUT(/*active*/ FALSE),
-    LOAD_AREA(/*area*/ 1),
+    //LOAD_AREA(/*area*/ 1),
+    CLEAR_DEMO_PTR(), // we need to do this or else file select will be tainted with inputs
+    GET_OR_SET(/*op*/ OP_GET, /*var*/ 5),
+    JUMP_IF(/*op*/ OP_EQ, /*arg*/ 1, script_intro_L1), // was start pressed when demo ended last time?
     SET_MENU_MUSIC(/*seq*/ 0x0002),
     TRANSITION(/*transType*/ WARP_TRANSITION_FADE_FROM_STAR, /*time*/ 20, /*color*/ 0x00, 0x00, 0x00),
     SLEEP(/*frames*/ 20),
-    CALL_LOOP(/*arg*/ 1, /*func*/ LevelProc_8016F508),
-    JUMP_IF(/*op*/ OP_EQ, /*arg*/ 100, script_intro_L1),
-    JUMP_IF(/*op*/ OP_EQ, /*arg*/ 101, script_intro_L2),
-    JUMP(script_intro_L4),
+    //CALL_LOOP(/*arg*/ 1, /*func*/ LevelProc_8016F508),
+    //JUMP_IF(/*op*/ OP_EQ, /*arg*/ 100, script_intro_L1),
+    //JUMP_IF(/*op*/ OP_EQ, /*arg*/ 101, script_intro_L2),
+    //JUMP(script_intro_L4),
+    ADV_DEMO(), // advance the demo ID manually with a new command which sets the level as script register
+    JUMP(script_intro_L4), // go to ingame
 };
 
 const LevelScript level_intro_entry_3[] = {
-    INIT_LEVEL(),
-    BLACKOUT(/*active*/ TRUE),
-    FIXED_LOAD(/*loadAddr*/ _goddardSegmentStart, /*romStart*/ _goddardSegmentRomStart, /*romEnd*/ _goddardSegmentRomEnd),
-    LOAD_MARIO_HEAD(/*loadHeadID*/ DIZZY_FACE),
-    LOAD_RAW(/*seg*/ 0x13, _behaviorSegmentRomStart, _behaviorSegmentRomEnd),
-    LOAD_MIO0_TEXTURE(/*seg*/ 0x0A, _title_screen_bg_mio0SegmentRomStart, _title_screen_bg_mio0SegmentRomEnd),
-    ALLOC_LEVEL_POOL(),
-
-    AREA(/*index*/ 1, intro_geo_0003B8),
-    END_AREA(),
-
-    FREE_LEVEL_POOL(),
-    SLEEP(/*frames*/ 2),
-    BLACKOUT(/*active*/ FALSE),
-    LOAD_AREA(/*area*/ 1),
-    SET_MENU_MUSIC(/*seq*/ 0x0082),
-    TRANSITION(/*transType*/ WARP_TRANSITION_FADE_FROM_STAR, /*time*/ 20, /*color*/ 0x00, 0x00, 0x00),
-    SLEEP(/*frames*/ 20),
-    CALL_LOOP(/*arg*/ 2, /*func*/ LevelProc_8016F508),
-    JUMP_IF(/*op*/ OP_EQ, /*arg*/ 100, script_intro_L1),
-    JUMP_IF(/*op*/ OP_EQ, /*arg*/ 101, script_intro_L2),
-    JUMP(script_intro_L4),
+    JUMP(level_intro_entry_2),
 };
 
 const LevelScript level_intro_entry_4[] = {

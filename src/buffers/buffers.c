@@ -33,4 +33,4 @@ ALIGNED8 struct SaveBuffer gSaveBuffer;
 ALIGNED8 u8 gGfxSPTaskStack[SP_DRAM_STACK_SIZE8];
 
 // 0x190a0 bytes
-struct GfxPool gGfxPools[2];
+struct GfxPool gGfxPools[GFX_NUM_POOLS];

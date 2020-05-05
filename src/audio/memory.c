@@ -375,10 +375,12 @@ void decrease_reverb_gain(void) {
  */
 void wait_for_audio_frames(s32 frames) {
     gAudioFrameCount = 0;
+#ifdef TARGET_N64
     // Sound thread will update gAudioFrameCount
     while (gAudioFrameCount < frames) {
         // spin
     }
+#endif
 }
 
 void audio_reset_session(struct AudioSessionSettings *preset) {
