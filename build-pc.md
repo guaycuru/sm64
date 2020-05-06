@@ -14,6 +14,11 @@ binary will be in `build/sm64.us.f3dex2e`
 * install gcc make glfw-devel libusb-devel audiofile-devel
 * `make -j9 TARGET_N64=0`
 
+# Building on Raspbian
+
+* sudo apt-get install gcc make libglfw3 libglfw3-dev libusb-dev libaudiofile-dev libxrandr-dev libsdl2-dev
+* `make -j2 TARGET_N64=0`
+
 # Building on Windows
 
 * install msys2 and start "MSYS2 MinGW 64-bit"
