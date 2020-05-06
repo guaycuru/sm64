@@ -43,98 +43,98 @@
 #define __IDXGIObject_FWD_DEFINED__
 typedef interface IDXGIObject IDXGIObject;
 
-#endif   /* __IDXGIObject_FWD_DEFINED__ */
+#endif 	/* __IDXGIObject_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIDeviceSubObject_FWD_DEFINED__
 #define __IDXGIDeviceSubObject_FWD_DEFINED__
 typedef interface IDXGIDeviceSubObject IDXGIDeviceSubObject;
 
-#endif   /* __IDXGIDeviceSubObject_FWD_DEFINED__ */
+#endif 	/* __IDXGIDeviceSubObject_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIResource_FWD_DEFINED__
 #define __IDXGIResource_FWD_DEFINED__
 typedef interface IDXGIResource IDXGIResource;
 
-#endif   /* __IDXGIResource_FWD_DEFINED__ */
+#endif 	/* __IDXGIResource_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIKeyedMutex_FWD_DEFINED__
 #define __IDXGIKeyedMutex_FWD_DEFINED__
 typedef interface IDXGIKeyedMutex IDXGIKeyedMutex;
 
-#endif   /* __IDXGIKeyedMutex_FWD_DEFINED__ */
+#endif 	/* __IDXGIKeyedMutex_FWD_DEFINED__ */
 
 
 #ifndef __IDXGISurface_FWD_DEFINED__
 #define __IDXGISurface_FWD_DEFINED__
 typedef interface IDXGISurface IDXGISurface;
 
-#endif   /* __IDXGISurface_FWD_DEFINED__ */
+#endif 	/* __IDXGISurface_FWD_DEFINED__ */
 
 
 #ifndef __IDXGISurface1_FWD_DEFINED__
 #define __IDXGISurface1_FWD_DEFINED__
 typedef interface IDXGISurface1 IDXGISurface1;
 
-#endif   /* __IDXGISurface1_FWD_DEFINED__ */
+#endif 	/* __IDXGISurface1_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIAdapter_FWD_DEFINED__
 #define __IDXGIAdapter_FWD_DEFINED__
 typedef interface IDXGIAdapter IDXGIAdapter;
 
-#endif   /* __IDXGIAdapter_FWD_DEFINED__ */
+#endif 	/* __IDXGIAdapter_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIOutput_FWD_DEFINED__
 #define __IDXGIOutput_FWD_DEFINED__
 typedef interface IDXGIOutput IDXGIOutput;
 
-#endif   /* __IDXGIOutput_FWD_DEFINED__ */
+#endif 	/* __IDXGIOutput_FWD_DEFINED__ */
 
 
 #ifndef __IDXGISwapChain_FWD_DEFINED__
 #define __IDXGISwapChain_FWD_DEFINED__
 typedef interface IDXGISwapChain IDXGISwapChain;
 
-#endif   /* __IDXGISwapChain_FWD_DEFINED__ */
+#endif 	/* __IDXGISwapChain_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIFactory_FWD_DEFINED__
 #define __IDXGIFactory_FWD_DEFINED__
 typedef interface IDXGIFactory IDXGIFactory;
 
-#endif   /* __IDXGIFactory_FWD_DEFINED__ */
+#endif 	/* __IDXGIFactory_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIDevice_FWD_DEFINED__
 #define __IDXGIDevice_FWD_DEFINED__
 typedef interface IDXGIDevice IDXGIDevice;
 
-#endif   /* __IDXGIDevice_FWD_DEFINED__ */
+#endif 	/* __IDXGIDevice_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIFactory1_FWD_DEFINED__
 #define __IDXGIFactory1_FWD_DEFINED__
 typedef interface IDXGIFactory1 IDXGIFactory1;
 
-#endif   /* __IDXGIFactory1_FWD_DEFINED__ */
+#endif 	/* __IDXGIFactory1_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIAdapter1_FWD_DEFINED__
 #define __IDXGIAdapter1_FWD_DEFINED__
 typedef interface IDXGIAdapter1 IDXGIAdapter1;
 
-#endif   /* __IDXGIAdapter1_FWD_DEFINED__ */
+#endif 	/* __IDXGIAdapter1_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIDevice1_FWD_DEFINED__
 #define __IDXGIDevice1_FWD_DEFINED__
 typedef interface IDXGIDevice1 IDXGIDevice1;
 
-#endif   /* __IDXGIDevice1_FWD_DEFINED__ */
+#endif 	/* __IDXGIDevice1_FWD_DEFINED__ */
 
 
 /* header files for imported files */
@@ -173,13 +173,13 @@ typedef struct DXGI_FRAME_STATISTICS
     UINT SyncRefreshCount;
     LARGE_INTEGER SyncQPCTime;
     LARGE_INTEGER SyncGPUTime;
-    }  DXGI_FRAME_STATISTICS;
+    } 	DXGI_FRAME_STATISTICS;
 
 typedef struct DXGI_MAPPED_RECT
     {
     INT Pitch;
     BYTE *pBits;
-    }  DXGI_MAPPED_RECT;
+    } 	DXGI_MAPPED_RECT;
 
 #ifdef __midl
 #ifndef LUID_DEFINED
@@ -188,7 +188,7 @@ typedef struct _LUID
     {
     DWORD LowPart;
     LONG HighPart;
-    }  LUID;
+    } 	LUID;
 
 typedef struct _LUID *PLUID;
 
@@ -205,7 +205,7 @@ typedef struct DXGI_ADAPTER_DESC
     SIZE_T DedicatedSystemMemory;
     SIZE_T SharedSystemMemory;
     LUID AdapterLuid;
-    }  DXGI_ADAPTER_DESC;
+    } 	DXGI_ADAPTER_DESC;
 
 #if !defined(HMONITOR_DECLARED) && !defined(HMONITOR) && (WINVER < 0x0500)
 #define HMONITOR_DECLARED
@@ -222,30 +222,30 @@ typedef struct DXGI_OUTPUT_DESC
     BOOL AttachedToDesktop;
     DXGI_MODE_ROTATION Rotation;
     HMONITOR Monitor;
-    }  DXGI_OUTPUT_DESC;
+    } 	DXGI_OUTPUT_DESC;
 
 typedef struct DXGI_SHARED_RESOURCE
     {
     HANDLE Handle;
-    }  DXGI_SHARED_RESOURCE;
+    } 	DXGI_SHARED_RESOURCE;
 
-#define  DXGI_RESOURCE_PRIORITY_MINIMUM  ( 0x28000000 )
+#define	DXGI_RESOURCE_PRIORITY_MINIMUM	( 0x28000000 )
 
-#define  DXGI_RESOURCE_PRIORITY_LOW  ( 0x50000000 )
+#define	DXGI_RESOURCE_PRIORITY_LOW	( 0x50000000 )
 
-#define  DXGI_RESOURCE_PRIORITY_NORMAL ( 0x78000000 )
+#define	DXGI_RESOURCE_PRIORITY_NORMAL	( 0x78000000 )
 
-#define  DXGI_RESOURCE_PRIORITY_HIGH ( 0xa0000000 )
+#define	DXGI_RESOURCE_PRIORITY_HIGH	( 0xa0000000 )
 
-#define  DXGI_RESOURCE_PRIORITY_MAXIMUM  ( 0xc8000000 )
+#define	DXGI_RESOURCE_PRIORITY_MAXIMUM	( 0xc8000000 )
 
 typedef 
 enum DXGI_RESIDENCY
     {
-        DXGI_RESIDENCY_FULLY_RESIDENT  = 1,
-        DXGI_RESIDENCY_RESIDENT_IN_SHARED_MEMORY = 2,
-        DXGI_RESIDENCY_EVICTED_TO_DISK = 3
-    }  DXGI_RESIDENCY;
+        DXGI_RESIDENCY_FULLY_RESIDENT	= 1,
+        DXGI_RESIDENCY_RESIDENT_IN_SHARED_MEMORY	= 2,
+        DXGI_RESIDENCY_EVICTED_TO_DISK	= 3
+    } 	DXGI_RESIDENCY;
 
 typedef struct DXGI_SURFACE_DESC
     {
@@ -253,34 +253,34 @@ typedef struct DXGI_SURFACE_DESC
     UINT Height;
     DXGI_FORMAT Format;
     DXGI_SAMPLE_DESC SampleDesc;
-    }  DXGI_SURFACE_DESC;
+    } 	DXGI_SURFACE_DESC;
 
 typedef 
 enum DXGI_SWAP_EFFECT
     {
-        DXGI_SWAP_EFFECT_DISCARD = 0,
-        DXGI_SWAP_EFFECT_SEQUENTIAL  = 1,
-        DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL = 3,
-        DXGI_SWAP_EFFECT_FLIP_DISCARD  = 4
-    }  DXGI_SWAP_EFFECT;
+        DXGI_SWAP_EFFECT_DISCARD	= 0,
+        DXGI_SWAP_EFFECT_SEQUENTIAL	= 1,
+        DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL	= 3,
+        DXGI_SWAP_EFFECT_FLIP_DISCARD	= 4
+    } 	DXGI_SWAP_EFFECT;
 
 typedef 
 enum DXGI_SWAP_CHAIN_FLAG
     {
-        DXGI_SWAP_CHAIN_FLAG_NONPREROTATED = 1,
-        DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH = 2,
-        DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE  = 4,
-        DXGI_SWAP_CHAIN_FLAG_RESTRICTED_CONTENT  = 8,
-        DXGI_SWAP_CHAIN_FLAG_RESTRICT_SHARED_RESOURCE_DRIVER = 16,
-        DXGI_SWAP_CHAIN_FLAG_DISPLAY_ONLY  = 32,
-        DXGI_SWAP_CHAIN_FLAG_FRAME_LATENCY_WAITABLE_OBJECT = 64,
-        DXGI_SWAP_CHAIN_FLAG_FOREGROUND_LAYER  = 128,
-        DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO  = 256,
-        DXGI_SWAP_CHAIN_FLAG_YUV_VIDEO = 512,
-        DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED  = 1024,
-        DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING = 2048,
-        DXGI_SWAP_CHAIN_FLAG_RESTRICTED_TO_ALL_HOLOGRAPHIC_DISPLAYS  = 4096
-    }  DXGI_SWAP_CHAIN_FLAG;
+        DXGI_SWAP_CHAIN_FLAG_NONPREROTATED	= 1,
+        DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH	= 2,
+        DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE	= 4,
+        DXGI_SWAP_CHAIN_FLAG_RESTRICTED_CONTENT	= 8,
+        DXGI_SWAP_CHAIN_FLAG_RESTRICT_SHARED_RESOURCE_DRIVER	= 16,
+        DXGI_SWAP_CHAIN_FLAG_DISPLAY_ONLY	= 32,
+        DXGI_SWAP_CHAIN_FLAG_FRAME_LATENCY_WAITABLE_OBJECT	= 64,
+        DXGI_SWAP_CHAIN_FLAG_FOREGROUND_LAYER	= 128,
+        DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO	= 256,
+        DXGI_SWAP_CHAIN_FLAG_YUV_VIDEO	= 512,
+        DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED	= 1024,
+        DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING	= 2048,
+        DXGI_SWAP_CHAIN_FLAG_RESTRICTED_TO_ALL_HOLOGRAPHIC_DISPLAYS	= 4096
+    } 	DXGI_SWAP_CHAIN_FLAG;
 
 typedef struct DXGI_SWAP_CHAIN_DESC
     {
@@ -292,7 +292,7 @@ typedef struct DXGI_SWAP_CHAIN_DESC
     BOOL Windowed;
     DXGI_SWAP_EFFECT SwapEffect;
     UINT Flags;
-    }  DXGI_SWAP_CHAIN_DESC;
+    } 	DXGI_SWAP_CHAIN_DESC;
 
 
 
@@ -344,7 +344,7 @@ EXTERN_C const IID IID_IDXGIObject;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIObjectVtbl
     {
@@ -406,37 +406,37 @@ EXTERN_C const IID IID_IDXGIObject;
 #ifdef COBJMACROS
 
 
-#define IDXGIObject_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIObject_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIObject_AddRef(This) \
+#define IDXGIObject_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIObject_Release(This)  \
+#define IDXGIObject_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIObject_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIObject_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIObject_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIObject_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIObject_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIObject_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIObject_GetParent(This,riid,ppParent)  \
+#define IDXGIObject_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIObject_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIObject_INTERFACE_DEFINED__ */
 
 
 #ifndef __IDXGIDeviceSubObject_INTERFACE_DEFINED__
@@ -463,7 +463,7 @@ EXTERN_C const IID IID_IDXGIDeviceSubObject;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIDeviceSubObjectVtbl
     {
@@ -532,41 +532,41 @@ EXTERN_C const IID IID_IDXGIDeviceSubObject;
 #ifdef COBJMACROS
 
 
-#define IDXGIDeviceSubObject_QueryInterface(This,riid,ppvObject) \
+#define IDXGIDeviceSubObject_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIDeviceSubObject_AddRef(This)  \
+#define IDXGIDeviceSubObject_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIDeviceSubObject_Release(This) \
+#define IDXGIDeviceSubObject_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIDeviceSubObject_SetPrivateData(This,Name,DataSize,pData)  \
+#define IDXGIDeviceSubObject_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIDeviceSubObject_SetPrivateDataInterface(This,Name,pUnknown) \
+#define IDXGIDeviceSubObject_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIDeviceSubObject_GetPrivateData(This,Name,pDataSize,pData) \
+#define IDXGIDeviceSubObject_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIDeviceSubObject_GetParent(This,riid,ppParent) \
+#define IDXGIDeviceSubObject_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIDeviceSubObject_GetDevice(This,riid,ppDevice) \
+#define IDXGIDeviceSubObject_GetDevice(This,riid,ppDevice)	\
     ( (This)->lpVtbl -> GetDevice(This,riid,ppDevice) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIDeviceSubObject_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIDeviceSubObject_INTERFACE_DEFINED__ */
 
 
 #ifndef __IDXGIResource_INTERFACE_DEFINED__
@@ -601,7 +601,7 @@ EXTERN_C const IID IID_IDXGIResource;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIResourceVtbl
     {
@@ -688,54 +688,54 @@ EXTERN_C const IID IID_IDXGIResource;
 #ifdef COBJMACROS
 
 
-#define IDXGIResource_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIResource_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIResource_AddRef(This) \
+#define IDXGIResource_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIResource_Release(This)  \
+#define IDXGIResource_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIResource_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIResource_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIResource_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIResource_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIResource_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIResource_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIResource_GetParent(This,riid,ppParent)  \
+#define IDXGIResource_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIResource_GetDevice(This,riid,ppDevice)  \
+#define IDXGIResource_GetDevice(This,riid,ppDevice)	\
     ( (This)->lpVtbl -> GetDevice(This,riid,ppDevice) ) 
 
 
-#define IDXGIResource_GetSharedHandle(This,pSharedHandle)  \
+#define IDXGIResource_GetSharedHandle(This,pSharedHandle)	\
     ( (This)->lpVtbl -> GetSharedHandle(This,pSharedHandle) ) 
 
-#define IDXGIResource_GetUsage(This,pUsage)  \
+#define IDXGIResource_GetUsage(This,pUsage)	\
     ( (This)->lpVtbl -> GetUsage(This,pUsage) ) 
 
-#define IDXGIResource_SetEvictionPriority(This,EvictionPriority) \
+#define IDXGIResource_SetEvictionPriority(This,EvictionPriority)	\
     ( (This)->lpVtbl -> SetEvictionPriority(This,EvictionPriority) ) 
 
-#define IDXGIResource_GetEvictionPriority(This,pEvictionPriority)  \
+#define IDXGIResource_GetEvictionPriority(This,pEvictionPriority)	\
     ( (This)->lpVtbl -> GetEvictionPriority(This,pEvictionPriority) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIResource_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIResource_INTERFACE_DEFINED__ */
 
 
 #ifndef __IDXGIKeyedMutex_INTERFACE_DEFINED__
@@ -763,7 +763,7 @@ EXTERN_C const IID IID_IDXGIKeyedMutex;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIKeyedMutexVtbl
     {
@@ -841,58 +841,58 @@ EXTERN_C const IID IID_IDXGIKeyedMutex;
 #ifdef COBJMACROS
 
 
-#define IDXGIKeyedMutex_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIKeyedMutex_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIKeyedMutex_AddRef(This) \
+#define IDXGIKeyedMutex_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIKeyedMutex_Release(This)  \
+#define IDXGIKeyedMutex_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIKeyedMutex_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIKeyedMutex_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIKeyedMutex_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIKeyedMutex_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIKeyedMutex_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIKeyedMutex_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIKeyedMutex_GetParent(This,riid,ppParent)  \
+#define IDXGIKeyedMutex_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIKeyedMutex_GetDevice(This,riid,ppDevice)  \
+#define IDXGIKeyedMutex_GetDevice(This,riid,ppDevice)	\
     ( (This)->lpVtbl -> GetDevice(This,riid,ppDevice) ) 
 
 
-#define IDXGIKeyedMutex_AcquireSync(This,Key,dwMilliseconds) \
+#define IDXGIKeyedMutex_AcquireSync(This,Key,dwMilliseconds)	\
     ( (This)->lpVtbl -> AcquireSync(This,Key,dwMilliseconds) ) 
 
-#define IDXGIKeyedMutex_ReleaseSync(This,Key)  \
+#define IDXGIKeyedMutex_ReleaseSync(This,Key)	\
     ( (This)->lpVtbl -> ReleaseSync(This,Key) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIKeyedMutex_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIKeyedMutex_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi_0000_0004 */
 /* [local] */ 
 
-#define  DXGI_MAP_READ ( 1UL )
+#define	DXGI_MAP_READ	( 1UL )
 
-#define  DXGI_MAP_WRITE  ( 2UL )
+#define	DXGI_MAP_WRITE	( 2UL )
 
-#define  DXGI_MAP_DISCARD  ( 4UL )
+#define	DXGI_MAP_DISCARD	( 4UL )
 
 
 
@@ -928,7 +928,7 @@ EXTERN_C const IID IID_IDXGISurface;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGISurfaceVtbl
     {
@@ -1011,51 +1011,51 @@ EXTERN_C const IID IID_IDXGISurface;
 #ifdef COBJMACROS
 
 
-#define IDXGISurface_QueryInterface(This,riid,ppvObject) \
+#define IDXGISurface_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGISurface_AddRef(This)  \
+#define IDXGISurface_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGISurface_Release(This) \
+#define IDXGISurface_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGISurface_SetPrivateData(This,Name,DataSize,pData)  \
+#define IDXGISurface_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGISurface_SetPrivateDataInterface(This,Name,pUnknown) \
+#define IDXGISurface_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGISurface_GetPrivateData(This,Name,pDataSize,pData) \
+#define IDXGISurface_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGISurface_GetParent(This,riid,ppParent) \
+#define IDXGISurface_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGISurface_GetDevice(This,riid,ppDevice) \
+#define IDXGISurface_GetDevice(This,riid,ppDevice)	\
     ( (This)->lpVtbl -> GetDevice(This,riid,ppDevice) ) 
 
 
-#define IDXGISurface_GetDesc(This,pDesc) \
+#define IDXGISurface_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGISurface_Map(This,pLockedRect,MapFlags)  \
+#define IDXGISurface_Map(This,pLockedRect,MapFlags)	\
     ( (This)->lpVtbl -> Map(This,pLockedRect,MapFlags) ) 
 
-#define IDXGISurface_Unmap(This) \
+#define IDXGISurface_Unmap(This)	\
     ( (This)->lpVtbl -> Unmap(This) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGISurface_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGISurface_INTERFACE_DEFINED__ */
 
 
 #ifndef __IDXGISurface1_INTERFACE_DEFINED__
@@ -1085,7 +1085,7 @@ EXTERN_C const IID IID_IDXGISurface1;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGISurface1Vtbl
     {
@@ -1179,58 +1179,58 @@ EXTERN_C const IID IID_IDXGISurface1;
 #ifdef COBJMACROS
 
 
-#define IDXGISurface1_QueryInterface(This,riid,ppvObject)  \
+#define IDXGISurface1_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGISurface1_AddRef(This) \
+#define IDXGISurface1_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGISurface1_Release(This)  \
+#define IDXGISurface1_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGISurface1_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGISurface1_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGISurface1_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGISurface1_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGISurface1_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGISurface1_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGISurface1_GetParent(This,riid,ppParent)  \
+#define IDXGISurface1_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGISurface1_GetDevice(This,riid,ppDevice)  \
+#define IDXGISurface1_GetDevice(This,riid,ppDevice)	\
     ( (This)->lpVtbl -> GetDevice(This,riid,ppDevice) ) 
 
 
-#define IDXGISurface1_GetDesc(This,pDesc)  \
+#define IDXGISurface1_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGISurface1_Map(This,pLockedRect,MapFlags) \
+#define IDXGISurface1_Map(This,pLockedRect,MapFlags)	\
     ( (This)->lpVtbl -> Map(This,pLockedRect,MapFlags) ) 
 
-#define IDXGISurface1_Unmap(This)  \
+#define IDXGISurface1_Unmap(This)	\
     ( (This)->lpVtbl -> Unmap(This) ) 
 
 
-#define IDXGISurface1_GetDC(This,Discard,phdc) \
+#define IDXGISurface1_GetDC(This,Discard,phdc)	\
     ( (This)->lpVtbl -> GetDC(This,Discard,phdc) ) 
 
-#define IDXGISurface1_ReleaseDC(This,pDirtyRect) \
+#define IDXGISurface1_ReleaseDC(This,pDirtyRect)	\
     ( (This)->lpVtbl -> ReleaseDC(This,pDirtyRect) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGISurface1_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGISurface1_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi_0000_0006 */
@@ -1275,7 +1275,7 @@ EXTERN_C const IID IID_IDXGIAdapter;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIAdapterVtbl
     {
@@ -1355,55 +1355,55 @@ EXTERN_C const IID IID_IDXGIAdapter;
 #ifdef COBJMACROS
 
 
-#define IDXGIAdapter_QueryInterface(This,riid,ppvObject) \
+#define IDXGIAdapter_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIAdapter_AddRef(This)  \
+#define IDXGIAdapter_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIAdapter_Release(This) \
+#define IDXGIAdapter_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIAdapter_SetPrivateData(This,Name,DataSize,pData)  \
+#define IDXGIAdapter_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIAdapter_SetPrivateDataInterface(This,Name,pUnknown) \
+#define IDXGIAdapter_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIAdapter_GetPrivateData(This,Name,pDataSize,pData) \
+#define IDXGIAdapter_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIAdapter_GetParent(This,riid,ppParent) \
+#define IDXGIAdapter_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIAdapter_EnumOutputs(This,Output,ppOutput) \
+#define IDXGIAdapter_EnumOutputs(This,Output,ppOutput)	\
     ( (This)->lpVtbl -> EnumOutputs(This,Output,ppOutput) ) 
 
-#define IDXGIAdapter_GetDesc(This,pDesc) \
+#define IDXGIAdapter_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGIAdapter_CheckInterfaceSupport(This,InterfaceName,pUMDVersion) \
+#define IDXGIAdapter_CheckInterfaceSupport(This,InterfaceName,pUMDVersion)	\
     ( (This)->lpVtbl -> CheckInterfaceSupport(This,InterfaceName,pUMDVersion) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIAdapter_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIAdapter_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi_0000_0007 */
 /* [local] */ 
 
-#define  DXGI_ENUM_MODES_INTERLACED  ( 1UL )
+#define	DXGI_ENUM_MODES_INTERLACED	( 1UL )
 
-#define  DXGI_ENUM_MODES_SCALING ( 2UL )
+#define	DXGI_ENUM_MODES_SCALING	( 2UL )
 
 
 
@@ -1481,7 +1481,7 @@ EXTERN_C const IID IID_IDXGIOutput;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIOutputVtbl
     {
@@ -1608,74 +1608,74 @@ EXTERN_C const IID IID_IDXGIOutput;
 #ifdef COBJMACROS
 
 
-#define IDXGIOutput_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIOutput_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIOutput_AddRef(This) \
+#define IDXGIOutput_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIOutput_Release(This)  \
+#define IDXGIOutput_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIOutput_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIOutput_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIOutput_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIOutput_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIOutput_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIOutput_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIOutput_GetParent(This,riid,ppParent)  \
+#define IDXGIOutput_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIOutput_GetDesc(This,pDesc)  \
+#define IDXGIOutput_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGIOutput_GetDisplayModeList(This,EnumFormat,Flags,pNumModes,pDesc)  \
+#define IDXGIOutput_GetDisplayModeList(This,EnumFormat,Flags,pNumModes,pDesc)	\
     ( (This)->lpVtbl -> GetDisplayModeList(This,EnumFormat,Flags,pNumModes,pDesc) ) 
 
-#define IDXGIOutput_FindClosestMatchingMode(This,pModeToMatch,pClosestMatch,pConcernedDevice)  \
+#define IDXGIOutput_FindClosestMatchingMode(This,pModeToMatch,pClosestMatch,pConcernedDevice)	\
     ( (This)->lpVtbl -> FindClosestMatchingMode(This,pModeToMatch,pClosestMatch,pConcernedDevice) ) 
 
-#define IDXGIOutput_WaitForVBlank(This)  \
+#define IDXGIOutput_WaitForVBlank(This)	\
     ( (This)->lpVtbl -> WaitForVBlank(This) ) 
 
-#define IDXGIOutput_TakeOwnership(This,pDevice,Exclusive)  \
+#define IDXGIOutput_TakeOwnership(This,pDevice,Exclusive)	\
     ( (This)->lpVtbl -> TakeOwnership(This,pDevice,Exclusive) ) 
 
-#define IDXGIOutput_ReleaseOwnership(This) \
+#define IDXGIOutput_ReleaseOwnership(This)	\
     ( (This)->lpVtbl -> ReleaseOwnership(This) ) 
 
-#define IDXGIOutput_GetGammaControlCapabilities(This,pGammaCaps) \
+#define IDXGIOutput_GetGammaControlCapabilities(This,pGammaCaps)	\
     ( (This)->lpVtbl -> GetGammaControlCapabilities(This,pGammaCaps) ) 
 
-#define IDXGIOutput_SetGammaControl(This,pArray) \
+#define IDXGIOutput_SetGammaControl(This,pArray)	\
     ( (This)->lpVtbl -> SetGammaControl(This,pArray) ) 
 
-#define IDXGIOutput_GetGammaControl(This,pArray) \
+#define IDXGIOutput_GetGammaControl(This,pArray)	\
     ( (This)->lpVtbl -> GetGammaControl(This,pArray) ) 
 
-#define IDXGIOutput_SetDisplaySurface(This,pScanoutSurface)  \
+#define IDXGIOutput_SetDisplaySurface(This,pScanoutSurface)	\
     ( (This)->lpVtbl -> SetDisplaySurface(This,pScanoutSurface) ) 
 
-#define IDXGIOutput_GetDisplaySurfaceData(This,pDestination) \
+#define IDXGIOutput_GetDisplaySurfaceData(This,pDestination)	\
     ( (This)->lpVtbl -> GetDisplaySurfaceData(This,pDestination) ) 
 
-#define IDXGIOutput_GetFrameStatistics(This,pStats)  \
+#define IDXGIOutput_GetFrameStatistics(This,pStats)	\
     ( (This)->lpVtbl -> GetFrameStatistics(This,pStats) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIOutput_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIOutput_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi_0000_0008 */
@@ -1763,7 +1763,7 @@ EXTERN_C const IID IID_IDXGISwapChain;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGISwapChainVtbl
     {
@@ -1891,72 +1891,72 @@ EXTERN_C const IID IID_IDXGISwapChain;
 #ifdef COBJMACROS
 
 
-#define IDXGISwapChain_QueryInterface(This,riid,ppvObject) \
+#define IDXGISwapChain_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGISwapChain_AddRef(This)  \
+#define IDXGISwapChain_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGISwapChain_Release(This) \
+#define IDXGISwapChain_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGISwapChain_SetPrivateData(This,Name,DataSize,pData)  \
+#define IDXGISwapChain_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGISwapChain_SetPrivateDataInterface(This,Name,pUnknown) \
+#define IDXGISwapChain_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGISwapChain_GetPrivateData(This,Name,pDataSize,pData) \
+#define IDXGISwapChain_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGISwapChain_GetParent(This,riid,ppParent) \
+#define IDXGISwapChain_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGISwapChain_GetDevice(This,riid,ppDevice) \
+#define IDXGISwapChain_GetDevice(This,riid,ppDevice)	\
     ( (This)->lpVtbl -> GetDevice(This,riid,ppDevice) ) 
 
 
-#define IDXGISwapChain_Present(This,SyncInterval,Flags)  \
+#define IDXGISwapChain_Present(This,SyncInterval,Flags)	\
     ( (This)->lpVtbl -> Present(This,SyncInterval,Flags) ) 
 
-#define IDXGISwapChain_GetBuffer(This,Buffer,riid,ppSurface) \
+#define IDXGISwapChain_GetBuffer(This,Buffer,riid,ppSurface)	\
     ( (This)->lpVtbl -> GetBuffer(This,Buffer,riid,ppSurface) ) 
 
-#define IDXGISwapChain_SetFullscreenState(This,Fullscreen,pTarget) \
+#define IDXGISwapChain_SetFullscreenState(This,Fullscreen,pTarget)	\
     ( (This)->lpVtbl -> SetFullscreenState(This,Fullscreen,pTarget) ) 
 
-#define IDXGISwapChain_GetFullscreenState(This,pFullscreen,ppTarget) \
+#define IDXGISwapChain_GetFullscreenState(This,pFullscreen,ppTarget)	\
     ( (This)->lpVtbl -> GetFullscreenState(This,pFullscreen,ppTarget) ) 
 
-#define IDXGISwapChain_GetDesc(This,pDesc) \
+#define IDXGISwapChain_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGISwapChain_ResizeBuffers(This,BufferCount,Width,Height,NewFormat,SwapChainFlags) \
+#define IDXGISwapChain_ResizeBuffers(This,BufferCount,Width,Height,NewFormat,SwapChainFlags)	\
     ( (This)->lpVtbl -> ResizeBuffers(This,BufferCount,Width,Height,NewFormat,SwapChainFlags) ) 
 
-#define IDXGISwapChain_ResizeTarget(This,pNewTargetParameters) \
+#define IDXGISwapChain_ResizeTarget(This,pNewTargetParameters)	\
     ( (This)->lpVtbl -> ResizeTarget(This,pNewTargetParameters) ) 
 
-#define IDXGISwapChain_GetContainingOutput(This,ppOutput)  \
+#define IDXGISwapChain_GetContainingOutput(This,ppOutput)	\
     ( (This)->lpVtbl -> GetContainingOutput(This,ppOutput) ) 
 
-#define IDXGISwapChain_GetFrameStatistics(This,pStats) \
+#define IDXGISwapChain_GetFrameStatistics(This,pStats)	\
     ( (This)->lpVtbl -> GetFrameStatistics(This,pStats) ) 
 
-#define IDXGISwapChain_GetLastPresentCount(This,pLastPresentCount) \
+#define IDXGISwapChain_GetLastPresentCount(This,pLastPresentCount)	\
     ( (This)->lpVtbl -> GetLastPresentCount(This,pLastPresentCount) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGISwapChain_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGISwapChain_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi_0000_0009 */
@@ -2015,7 +2015,7 @@ EXTERN_C const IID IID_IDXGIFactory;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIFactoryVtbl
     {
@@ -2108,53 +2108,53 @@ EXTERN_C const IID IID_IDXGIFactory;
 #ifdef COBJMACROS
 
 
-#define IDXGIFactory_QueryInterface(This,riid,ppvObject) \
+#define IDXGIFactory_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIFactory_AddRef(This)  \
+#define IDXGIFactory_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIFactory_Release(This) \
+#define IDXGIFactory_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIFactory_SetPrivateData(This,Name,DataSize,pData)  \
+#define IDXGIFactory_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIFactory_SetPrivateDataInterface(This,Name,pUnknown) \
+#define IDXGIFactory_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIFactory_GetPrivateData(This,Name,pDataSize,pData) \
+#define IDXGIFactory_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIFactory_GetParent(This,riid,ppParent) \
+#define IDXGIFactory_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIFactory_EnumAdapters(This,Adapter,ppAdapter)  \
+#define IDXGIFactory_EnumAdapters(This,Adapter,ppAdapter)	\
     ( (This)->lpVtbl -> EnumAdapters(This,Adapter,ppAdapter) ) 
 
-#define IDXGIFactory_MakeWindowAssociation(This,WindowHandle,Flags)  \
+#define IDXGIFactory_MakeWindowAssociation(This,WindowHandle,Flags)	\
     ( (This)->lpVtbl -> MakeWindowAssociation(This,WindowHandle,Flags) ) 
 
-#define IDXGIFactory_GetWindowAssociation(This,pWindowHandle)  \
+#define IDXGIFactory_GetWindowAssociation(This,pWindowHandle)	\
     ( (This)->lpVtbl -> GetWindowAssociation(This,pWindowHandle) ) 
 
-#define IDXGIFactory_CreateSwapChain(This,pDevice,pDesc,ppSwapChain) \
+#define IDXGIFactory_CreateSwapChain(This,pDevice,pDesc,ppSwapChain)	\
     ( (This)->lpVtbl -> CreateSwapChain(This,pDevice,pDesc,ppSwapChain) ) 
 
-#define IDXGIFactory_CreateSoftwareAdapter(This,Module,ppAdapter)  \
+#define IDXGIFactory_CreateSoftwareAdapter(This,Module,ppAdapter)	\
     ( (This)->lpVtbl -> CreateSoftwareAdapter(This,Module,ppAdapter) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIFactory_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIFactory_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi_0000_0010 */
@@ -2217,7 +2217,7 @@ EXTERN_C const IID IID_IDXGIDevice;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIDeviceVtbl
     {
@@ -2312,53 +2312,53 @@ EXTERN_C const IID IID_IDXGIDevice;
 #ifdef COBJMACROS
 
 
-#define IDXGIDevice_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIDevice_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIDevice_AddRef(This) \
+#define IDXGIDevice_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIDevice_Release(This)  \
+#define IDXGIDevice_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIDevice_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIDevice_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIDevice_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIDevice_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIDevice_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIDevice_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIDevice_GetParent(This,riid,ppParent)  \
+#define IDXGIDevice_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIDevice_GetAdapter(This,pAdapter)  \
+#define IDXGIDevice_GetAdapter(This,pAdapter)	\
     ( (This)->lpVtbl -> GetAdapter(This,pAdapter) ) 
 
-#define IDXGIDevice_CreateSurface(This,pDesc,NumSurfaces,Usage,pSharedResource,ppSurface)  \
+#define IDXGIDevice_CreateSurface(This,pDesc,NumSurfaces,Usage,pSharedResource,ppSurface)	\
     ( (This)->lpVtbl -> CreateSurface(This,pDesc,NumSurfaces,Usage,pSharedResource,ppSurface) ) 
 
-#define IDXGIDevice_QueryResourceResidency(This,ppResources,pResidencyStatus,NumResources) \
+#define IDXGIDevice_QueryResourceResidency(This,ppResources,pResidencyStatus,NumResources)	\
     ( (This)->lpVtbl -> QueryResourceResidency(This,ppResources,pResidencyStatus,NumResources) ) 
 
-#define IDXGIDevice_SetGPUThreadPriority(This,Priority)  \
+#define IDXGIDevice_SetGPUThreadPriority(This,Priority)	\
     ( (This)->lpVtbl -> SetGPUThreadPriority(This,Priority) ) 
 
-#define IDXGIDevice_GetGPUThreadPriority(This,pPriority) \
+#define IDXGIDevice_GetGPUThreadPriority(This,pPriority)	\
     ( (This)->lpVtbl -> GetGPUThreadPriority(This,pPriority) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIDevice_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIDevice_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi_0000_0011 */
@@ -2367,11 +2367,11 @@ EXTERN_C const IID IID_IDXGIDevice;
 typedef 
 enum DXGI_ADAPTER_FLAG
     {
-        DXGI_ADAPTER_FLAG_NONE = 0,
-        DXGI_ADAPTER_FLAG_REMOTE = 1,
-        DXGI_ADAPTER_FLAG_SOFTWARE = 2,
-        DXGI_ADAPTER_FLAG_FORCE_DWORD  = 0xffffffff
-    }  DXGI_ADAPTER_FLAG;
+        DXGI_ADAPTER_FLAG_NONE	= 0,
+        DXGI_ADAPTER_FLAG_REMOTE	= 1,
+        DXGI_ADAPTER_FLAG_SOFTWARE	= 2,
+        DXGI_ADAPTER_FLAG_FORCE_DWORD	= 0xffffffff
+    } 	DXGI_ADAPTER_FLAG;
 
 typedef struct DXGI_ADAPTER_DESC1
     {
@@ -2385,13 +2385,13 @@ typedef struct DXGI_ADAPTER_DESC1
     SIZE_T SharedSystemMemory;
     LUID AdapterLuid;
     UINT Flags;
-    }  DXGI_ADAPTER_DESC1;
+    } 	DXGI_ADAPTER_DESC1;
 
 typedef struct DXGI_DISPLAY_COLOR_SPACE
     {
     FLOAT PrimaryCoordinates[ 8 ][ 2 ];
     FLOAT WhitePoints[ 16 ][ 2 ];
-    }  DXGI_DISPLAY_COLOR_SPACE;
+    } 	DXGI_DISPLAY_COLOR_SPACE;
 
 
 
@@ -2424,7 +2424,7 @@ EXTERN_C const IID IID_IDXGIFactory1;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIFactory1Vtbl
     {
@@ -2526,60 +2526,60 @@ EXTERN_C const IID IID_IDXGIFactory1;
 #ifdef COBJMACROS
 
 
-#define IDXGIFactory1_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIFactory1_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIFactory1_AddRef(This) \
+#define IDXGIFactory1_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIFactory1_Release(This)  \
+#define IDXGIFactory1_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIFactory1_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIFactory1_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIFactory1_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIFactory1_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIFactory1_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIFactory1_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIFactory1_GetParent(This,riid,ppParent)  \
+#define IDXGIFactory1_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIFactory1_EnumAdapters(This,Adapter,ppAdapter) \
+#define IDXGIFactory1_EnumAdapters(This,Adapter,ppAdapter)	\
     ( (This)->lpVtbl -> EnumAdapters(This,Adapter,ppAdapter) ) 
 
-#define IDXGIFactory1_MakeWindowAssociation(This,WindowHandle,Flags) \
+#define IDXGIFactory1_MakeWindowAssociation(This,WindowHandle,Flags)	\
     ( (This)->lpVtbl -> MakeWindowAssociation(This,WindowHandle,Flags) ) 
 
-#define IDXGIFactory1_GetWindowAssociation(This,pWindowHandle) \
+#define IDXGIFactory1_GetWindowAssociation(This,pWindowHandle)	\
     ( (This)->lpVtbl -> GetWindowAssociation(This,pWindowHandle) ) 
 
-#define IDXGIFactory1_CreateSwapChain(This,pDevice,pDesc,ppSwapChain)  \
+#define IDXGIFactory1_CreateSwapChain(This,pDevice,pDesc,ppSwapChain)	\
     ( (This)->lpVtbl -> CreateSwapChain(This,pDevice,pDesc,ppSwapChain) ) 
 
-#define IDXGIFactory1_CreateSoftwareAdapter(This,Module,ppAdapter) \
+#define IDXGIFactory1_CreateSoftwareAdapter(This,Module,ppAdapter)	\
     ( (This)->lpVtbl -> CreateSoftwareAdapter(This,Module,ppAdapter) ) 
 
 
-#define IDXGIFactory1_EnumAdapters1(This,Adapter,ppAdapter)  \
+#define IDXGIFactory1_EnumAdapters1(This,Adapter,ppAdapter)	\
     ( (This)->lpVtbl -> EnumAdapters1(This,Adapter,ppAdapter) ) 
 
-#define IDXGIFactory1_IsCurrent(This)  \
+#define IDXGIFactory1_IsCurrent(This)	\
     ( (This)->lpVtbl -> IsCurrent(This) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIFactory1_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIFactory1_INTERFACE_DEFINED__ */
 
 
 #ifndef __IDXGIAdapter1_INTERFACE_DEFINED__
@@ -2604,7 +2604,7 @@ EXTERN_C const IID IID_IDXGIAdapter1;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIAdapter1Vtbl
     {
@@ -2689,51 +2689,51 @@ EXTERN_C const IID IID_IDXGIAdapter1;
 #ifdef COBJMACROS
 
 
-#define IDXGIAdapter1_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIAdapter1_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIAdapter1_AddRef(This) \
+#define IDXGIAdapter1_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIAdapter1_Release(This)  \
+#define IDXGIAdapter1_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIAdapter1_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIAdapter1_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIAdapter1_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIAdapter1_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIAdapter1_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIAdapter1_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIAdapter1_GetParent(This,riid,ppParent)  \
+#define IDXGIAdapter1_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIAdapter1_EnumOutputs(This,Output,ppOutput)  \
+#define IDXGIAdapter1_EnumOutputs(This,Output,ppOutput)	\
     ( (This)->lpVtbl -> EnumOutputs(This,Output,ppOutput) ) 
 
-#define IDXGIAdapter1_GetDesc(This,pDesc)  \
+#define IDXGIAdapter1_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGIAdapter1_CheckInterfaceSupport(This,InterfaceName,pUMDVersion)  \
+#define IDXGIAdapter1_CheckInterfaceSupport(This,InterfaceName,pUMDVersion)	\
     ( (This)->lpVtbl -> CheckInterfaceSupport(This,InterfaceName,pUMDVersion) ) 
 
 
-#define IDXGIAdapter1_GetDesc1(This,pDesc) \
+#define IDXGIAdapter1_GetDesc1(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc1(This,pDesc) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIAdapter1_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIAdapter1_INTERFACE_DEFINED__ */
 
 
 #ifndef __IDXGIDevice1_INTERFACE_DEFINED__
@@ -2761,7 +2761,7 @@ EXTERN_C const IID IID_IDXGIDevice1;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIDevice1Vtbl
     {
@@ -2865,60 +2865,60 @@ EXTERN_C const IID IID_IDXGIDevice1;
 #ifdef COBJMACROS
 
 
-#define IDXGIDevice1_QueryInterface(This,riid,ppvObject) \
+#define IDXGIDevice1_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIDevice1_AddRef(This)  \
+#define IDXGIDevice1_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIDevice1_Release(This) \
+#define IDXGIDevice1_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIDevice1_SetPrivateData(This,Name,DataSize,pData)  \
+#define IDXGIDevice1_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIDevice1_SetPrivateDataInterface(This,Name,pUnknown) \
+#define IDXGIDevice1_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIDevice1_GetPrivateData(This,Name,pDataSize,pData) \
+#define IDXGIDevice1_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIDevice1_GetParent(This,riid,ppParent) \
+#define IDXGIDevice1_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIDevice1_GetAdapter(This,pAdapter) \
+#define IDXGIDevice1_GetAdapter(This,pAdapter)	\
     ( (This)->lpVtbl -> GetAdapter(This,pAdapter) ) 
 
-#define IDXGIDevice1_CreateSurface(This,pDesc,NumSurfaces,Usage,pSharedResource,ppSurface) \
+#define IDXGIDevice1_CreateSurface(This,pDesc,NumSurfaces,Usage,pSharedResource,ppSurface)	\
     ( (This)->lpVtbl -> CreateSurface(This,pDesc,NumSurfaces,Usage,pSharedResource,ppSurface) ) 
 
-#define IDXGIDevice1_QueryResourceResidency(This,ppResources,pResidencyStatus,NumResources)  \
+#define IDXGIDevice1_QueryResourceResidency(This,ppResources,pResidencyStatus,NumResources)	\
     ( (This)->lpVtbl -> QueryResourceResidency(This,ppResources,pResidencyStatus,NumResources) ) 
 
-#define IDXGIDevice1_SetGPUThreadPriority(This,Priority) \
+#define IDXGIDevice1_SetGPUThreadPriority(This,Priority)	\
     ( (This)->lpVtbl -> SetGPUThreadPriority(This,Priority) ) 
 
-#define IDXGIDevice1_GetGPUThreadPriority(This,pPriority)  \
+#define IDXGIDevice1_GetGPUThreadPriority(This,pPriority)	\
     ( (This)->lpVtbl -> GetGPUThreadPriority(This,pPriority) ) 
 
 
-#define IDXGIDevice1_SetMaximumFrameLatency(This,MaxLatency) \
+#define IDXGIDevice1_SetMaximumFrameLatency(This,MaxLatency)	\
     ( (This)->lpVtbl -> SetMaximumFrameLatency(This,MaxLatency) ) 
 
-#define IDXGIDevice1_GetMaximumFrameLatency(This,pMaxLatency)  \
+#define IDXGIDevice1_GetMaximumFrameLatency(This,pMaxLatency)	\
     ( (This)->lpVtbl -> GetMaximumFrameLatency(This,pMaxLatency) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIDevice1_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIDevice1_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi_0000_0014 */

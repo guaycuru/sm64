@@ -192,9 +192,9 @@ D3DWriteBlobToFile(_In_ ID3DBlob* pBlob,
 // D3DCOMPILE Flags2:
 // -----------------
 // Root signature flags. (passed in Flags2)
-#define D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_LATEST    0
-#define D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_1_0     (1 << 4)
-#define D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_1_1     (1 << 5)
+#define D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_LATEST		0
+#define D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_1_0			(1 << 4)
+#define D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_1_1			(1 << 5)
 
 //----------------------------------------------------------------------------
 // D3DCompile:
@@ -327,7 +327,7 @@ D3DReflect(_In_reads_bytes_(SrcDataSize) LPCVOID pSrcData,
 HRESULT WINAPI
 D3DReflectLibrary(__in_bcount(SrcDataSize) LPCVOID pSrcData,
                   __in SIZE_T SrcDataSize,
-               __in REFIID riid,
+	              __in REFIID riid,
                   __out LPVOID * ppReflector);
 
 //----------------------------------------------------------------------------
@@ -549,7 +549,7 @@ D3DCompressShaders(_In_ UINT uNumShaders,
 HRESULT WINAPI
 D3DDecompressShaders(_In_reads_bytes_(SrcDataSize) LPCVOID pSrcData,
                      _In_ SIZE_T SrcDataSize,
-                     _In_ UINT uNumShaders,        
+                     _In_ UINT uNumShaders,	      
                      _In_ UINT uStartIndex,
                      _In_reads_opt_(uNumShaders) UINT* pIndices,
                      _In_ UINT uFlags,

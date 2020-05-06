@@ -43,28 +43,28 @@
 #define __IDXGISwapChain3_FWD_DEFINED__
 typedef interface IDXGISwapChain3 IDXGISwapChain3;
 
-#endif   /* __IDXGISwapChain3_FWD_DEFINED__ */
+#endif 	/* __IDXGISwapChain3_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIOutput4_FWD_DEFINED__
 #define __IDXGIOutput4_FWD_DEFINED__
 typedef interface IDXGIOutput4 IDXGIOutput4;
 
-#endif   /* __IDXGIOutput4_FWD_DEFINED__ */
+#endif 	/* __IDXGIOutput4_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIFactory4_FWD_DEFINED__
 #define __IDXGIFactory4_FWD_DEFINED__
 typedef interface IDXGIFactory4 IDXGIFactory4;
 
-#endif   /* __IDXGIFactory4_FWD_DEFINED__ */
+#endif 	/* __IDXGIFactory4_FWD_DEFINED__ */
 
 
 #ifndef __IDXGIAdapter3_FWD_DEFINED__
 #define __IDXGIAdapter3_FWD_DEFINED__
 typedef interface IDXGIAdapter3 IDXGIAdapter3;
 
-#endif   /* __IDXGIAdapter3_FWD_DEFINED__ */
+#endif 	/* __IDXGIAdapter3_FWD_DEFINED__ */
 
 
 /* header files for imported files */
@@ -84,9 +84,9 @@ extern "C"{
 typedef 
 enum DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG
     {
-        DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT = 0x1,
-        DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_OVERLAY_PRESENT = 0x2
-    }  DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG;
+        DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT	= 0x1,
+        DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_OVERLAY_PRESENT	= 0x2
+    } 	DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG;
 
 
 
@@ -139,7 +139,7 @@ EXTERN_C const IID IID_IDXGISwapChain3;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGISwapChain3Vtbl
     {
@@ -389,141 +389,141 @@ EXTERN_C const IID IID_IDXGISwapChain3;
 #ifdef COBJMACROS
 
 
-#define IDXGISwapChain3_QueryInterface(This,riid,ppvObject)  \
+#define IDXGISwapChain3_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGISwapChain3_AddRef(This) \
+#define IDXGISwapChain3_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGISwapChain3_Release(This)  \
+#define IDXGISwapChain3_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGISwapChain3_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGISwapChain3_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGISwapChain3_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGISwapChain3_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGISwapChain3_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGISwapChain3_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGISwapChain3_GetParent(This,riid,ppParent)  \
+#define IDXGISwapChain3_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGISwapChain3_GetDevice(This,riid,ppDevice)  \
+#define IDXGISwapChain3_GetDevice(This,riid,ppDevice)	\
     ( (This)->lpVtbl -> GetDevice(This,riid,ppDevice) ) 
 
 
-#define IDXGISwapChain3_Present(This,SyncInterval,Flags) \
+#define IDXGISwapChain3_Present(This,SyncInterval,Flags)	\
     ( (This)->lpVtbl -> Present(This,SyncInterval,Flags) ) 
 
-#define IDXGISwapChain3_GetBuffer(This,Buffer,riid,ppSurface)  \
+#define IDXGISwapChain3_GetBuffer(This,Buffer,riid,ppSurface)	\
     ( (This)->lpVtbl -> GetBuffer(This,Buffer,riid,ppSurface) ) 
 
-#define IDXGISwapChain3_SetFullscreenState(This,Fullscreen,pTarget)  \
+#define IDXGISwapChain3_SetFullscreenState(This,Fullscreen,pTarget)	\
     ( (This)->lpVtbl -> SetFullscreenState(This,Fullscreen,pTarget) ) 
 
-#define IDXGISwapChain3_GetFullscreenState(This,pFullscreen,ppTarget)  \
+#define IDXGISwapChain3_GetFullscreenState(This,pFullscreen,ppTarget)	\
     ( (This)->lpVtbl -> GetFullscreenState(This,pFullscreen,ppTarget) ) 
 
-#define IDXGISwapChain3_GetDesc(This,pDesc)  \
+#define IDXGISwapChain3_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGISwapChain3_ResizeBuffers(This,BufferCount,Width,Height,NewFormat,SwapChainFlags)  \
+#define IDXGISwapChain3_ResizeBuffers(This,BufferCount,Width,Height,NewFormat,SwapChainFlags)	\
     ( (This)->lpVtbl -> ResizeBuffers(This,BufferCount,Width,Height,NewFormat,SwapChainFlags) ) 
 
-#define IDXGISwapChain3_ResizeTarget(This,pNewTargetParameters)  \
+#define IDXGISwapChain3_ResizeTarget(This,pNewTargetParameters)	\
     ( (This)->lpVtbl -> ResizeTarget(This,pNewTargetParameters) ) 
 
-#define IDXGISwapChain3_GetContainingOutput(This,ppOutput) \
+#define IDXGISwapChain3_GetContainingOutput(This,ppOutput)	\
     ( (This)->lpVtbl -> GetContainingOutput(This,ppOutput) ) 
 
-#define IDXGISwapChain3_GetFrameStatistics(This,pStats)  \
+#define IDXGISwapChain3_GetFrameStatistics(This,pStats)	\
     ( (This)->lpVtbl -> GetFrameStatistics(This,pStats) ) 
 
-#define IDXGISwapChain3_GetLastPresentCount(This,pLastPresentCount)  \
+#define IDXGISwapChain3_GetLastPresentCount(This,pLastPresentCount)	\
     ( (This)->lpVtbl -> GetLastPresentCount(This,pLastPresentCount) ) 
 
 
-#define IDXGISwapChain3_GetDesc1(This,pDesc) \
+#define IDXGISwapChain3_GetDesc1(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc1(This,pDesc) ) 
 
-#define IDXGISwapChain3_GetFullscreenDesc(This,pDesc)  \
+#define IDXGISwapChain3_GetFullscreenDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetFullscreenDesc(This,pDesc) ) 
 
-#define IDXGISwapChain3_GetHwnd(This,pHwnd)  \
+#define IDXGISwapChain3_GetHwnd(This,pHwnd)	\
     ( (This)->lpVtbl -> GetHwnd(This,pHwnd) ) 
 
-#define IDXGISwapChain3_GetCoreWindow(This,refiid,ppUnk) \
+#define IDXGISwapChain3_GetCoreWindow(This,refiid,ppUnk)	\
     ( (This)->lpVtbl -> GetCoreWindow(This,refiid,ppUnk) ) 
 
-#define IDXGISwapChain3_Present1(This,SyncInterval,PresentFlags,pPresentParameters)  \
+#define IDXGISwapChain3_Present1(This,SyncInterval,PresentFlags,pPresentParameters)	\
     ( (This)->lpVtbl -> Present1(This,SyncInterval,PresentFlags,pPresentParameters) ) 
 
-#define IDXGISwapChain3_IsTemporaryMonoSupported(This) \
+#define IDXGISwapChain3_IsTemporaryMonoSupported(This)	\
     ( (This)->lpVtbl -> IsTemporaryMonoSupported(This) ) 
 
-#define IDXGISwapChain3_GetRestrictToOutput(This,ppRestrictToOutput) \
+#define IDXGISwapChain3_GetRestrictToOutput(This,ppRestrictToOutput)	\
     ( (This)->lpVtbl -> GetRestrictToOutput(This,ppRestrictToOutput) ) 
 
-#define IDXGISwapChain3_SetBackgroundColor(This,pColor)  \
+#define IDXGISwapChain3_SetBackgroundColor(This,pColor)	\
     ( (This)->lpVtbl -> SetBackgroundColor(This,pColor) ) 
 
-#define IDXGISwapChain3_GetBackgroundColor(This,pColor)  \
+#define IDXGISwapChain3_GetBackgroundColor(This,pColor)	\
     ( (This)->lpVtbl -> GetBackgroundColor(This,pColor) ) 
 
-#define IDXGISwapChain3_SetRotation(This,Rotation) \
+#define IDXGISwapChain3_SetRotation(This,Rotation)	\
     ( (This)->lpVtbl -> SetRotation(This,Rotation) ) 
 
-#define IDXGISwapChain3_GetRotation(This,pRotation)  \
+#define IDXGISwapChain3_GetRotation(This,pRotation)	\
     ( (This)->lpVtbl -> GetRotation(This,pRotation) ) 
 
 
-#define IDXGISwapChain3_SetSourceSize(This,Width,Height) \
+#define IDXGISwapChain3_SetSourceSize(This,Width,Height)	\
     ( (This)->lpVtbl -> SetSourceSize(This,Width,Height) ) 
 
-#define IDXGISwapChain3_GetSourceSize(This,pWidth,pHeight) \
+#define IDXGISwapChain3_GetSourceSize(This,pWidth,pHeight)	\
     ( (This)->lpVtbl -> GetSourceSize(This,pWidth,pHeight) ) 
 
-#define IDXGISwapChain3_SetMaximumFrameLatency(This,MaxLatency)  \
+#define IDXGISwapChain3_SetMaximumFrameLatency(This,MaxLatency)	\
     ( (This)->lpVtbl -> SetMaximumFrameLatency(This,MaxLatency) ) 
 
-#define IDXGISwapChain3_GetMaximumFrameLatency(This,pMaxLatency) \
+#define IDXGISwapChain3_GetMaximumFrameLatency(This,pMaxLatency)	\
     ( (This)->lpVtbl -> GetMaximumFrameLatency(This,pMaxLatency) ) 
 
-#define IDXGISwapChain3_GetFrameLatencyWaitableObject(This)  \
+#define IDXGISwapChain3_GetFrameLatencyWaitableObject(This)	\
     ( (This)->lpVtbl -> GetFrameLatencyWaitableObject(This) ) 
 
-#define IDXGISwapChain3_SetMatrixTransform(This,pMatrix) \
+#define IDXGISwapChain3_SetMatrixTransform(This,pMatrix)	\
     ( (This)->lpVtbl -> SetMatrixTransform(This,pMatrix) ) 
 
-#define IDXGISwapChain3_GetMatrixTransform(This,pMatrix) \
+#define IDXGISwapChain3_GetMatrixTransform(This,pMatrix)	\
     ( (This)->lpVtbl -> GetMatrixTransform(This,pMatrix) ) 
 
 
-#define IDXGISwapChain3_GetCurrentBackBufferIndex(This)  \
+#define IDXGISwapChain3_GetCurrentBackBufferIndex(This)	\
     ( (This)->lpVtbl -> GetCurrentBackBufferIndex(This) ) 
 
-#define IDXGISwapChain3_CheckColorSpaceSupport(This,ColorSpace,pColorSpaceSupport) \
+#define IDXGISwapChain3_CheckColorSpaceSupport(This,ColorSpace,pColorSpaceSupport)	\
     ( (This)->lpVtbl -> CheckColorSpaceSupport(This,ColorSpace,pColorSpaceSupport) ) 
 
-#define IDXGISwapChain3_SetColorSpace1(This,ColorSpace)  \
+#define IDXGISwapChain3_SetColorSpace1(This,ColorSpace)	\
     ( (This)->lpVtbl -> SetColorSpace1(This,ColorSpace) ) 
 
-#define IDXGISwapChain3_ResizeBuffers1(This,BufferCount,Width,Height,Format,SwapChainFlags,pCreationNodeMask,ppPresentQueue) \
+#define IDXGISwapChain3_ResizeBuffers1(This,BufferCount,Width,Height,Format,SwapChainFlags,pCreationNodeMask,ppPresentQueue)	\
     ( (This)->lpVtbl -> ResizeBuffers1(This,BufferCount,Width,Height,Format,SwapChainFlags,pCreationNodeMask,ppPresentQueue) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGISwapChain3_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGISwapChain3_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi1_4_0000_0001 */
@@ -532,8 +532,8 @@ EXTERN_C const IID IID_IDXGISwapChain3;
 typedef 
 enum DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG
     {
-        DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT  = 0x1
-    }  DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG;
+        DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT	= 0x1
+    } 	DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG;
 
 
 
@@ -568,7 +568,7 @@ EXTERN_C const IID IID_IDXGIOutput4;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIOutput4Vtbl
     {
@@ -748,99 +748,99 @@ EXTERN_C const IID IID_IDXGIOutput4;
 #ifdef COBJMACROS
 
 
-#define IDXGIOutput4_QueryInterface(This,riid,ppvObject) \
+#define IDXGIOutput4_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIOutput4_AddRef(This)  \
+#define IDXGIOutput4_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIOutput4_Release(This) \
+#define IDXGIOutput4_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIOutput4_SetPrivateData(This,Name,DataSize,pData)  \
+#define IDXGIOutput4_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIOutput4_SetPrivateDataInterface(This,Name,pUnknown) \
+#define IDXGIOutput4_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIOutput4_GetPrivateData(This,Name,pDataSize,pData) \
+#define IDXGIOutput4_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIOutput4_GetParent(This,riid,ppParent) \
+#define IDXGIOutput4_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIOutput4_GetDesc(This,pDesc) \
+#define IDXGIOutput4_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGIOutput4_GetDisplayModeList(This,EnumFormat,Flags,pNumModes,pDesc) \
+#define IDXGIOutput4_GetDisplayModeList(This,EnumFormat,Flags,pNumModes,pDesc)	\
     ( (This)->lpVtbl -> GetDisplayModeList(This,EnumFormat,Flags,pNumModes,pDesc) ) 
 
-#define IDXGIOutput4_FindClosestMatchingMode(This,pModeToMatch,pClosestMatch,pConcernedDevice) \
+#define IDXGIOutput4_FindClosestMatchingMode(This,pModeToMatch,pClosestMatch,pConcernedDevice)	\
     ( (This)->lpVtbl -> FindClosestMatchingMode(This,pModeToMatch,pClosestMatch,pConcernedDevice) ) 
 
-#define IDXGIOutput4_WaitForVBlank(This) \
+#define IDXGIOutput4_WaitForVBlank(This)	\
     ( (This)->lpVtbl -> WaitForVBlank(This) ) 
 
-#define IDXGIOutput4_TakeOwnership(This,pDevice,Exclusive) \
+#define IDXGIOutput4_TakeOwnership(This,pDevice,Exclusive)	\
     ( (This)->lpVtbl -> TakeOwnership(This,pDevice,Exclusive) ) 
 
-#define IDXGIOutput4_ReleaseOwnership(This)  \
+#define IDXGIOutput4_ReleaseOwnership(This)	\
     ( (This)->lpVtbl -> ReleaseOwnership(This) ) 
 
-#define IDXGIOutput4_GetGammaControlCapabilities(This,pGammaCaps)  \
+#define IDXGIOutput4_GetGammaControlCapabilities(This,pGammaCaps)	\
     ( (This)->lpVtbl -> GetGammaControlCapabilities(This,pGammaCaps) ) 
 
-#define IDXGIOutput4_SetGammaControl(This,pArray)  \
+#define IDXGIOutput4_SetGammaControl(This,pArray)	\
     ( (This)->lpVtbl -> SetGammaControl(This,pArray) ) 
 
-#define IDXGIOutput4_GetGammaControl(This,pArray)  \
+#define IDXGIOutput4_GetGammaControl(This,pArray)	\
     ( (This)->lpVtbl -> GetGammaControl(This,pArray) ) 
 
-#define IDXGIOutput4_SetDisplaySurface(This,pScanoutSurface) \
+#define IDXGIOutput4_SetDisplaySurface(This,pScanoutSurface)	\
     ( (This)->lpVtbl -> SetDisplaySurface(This,pScanoutSurface) ) 
 
-#define IDXGIOutput4_GetDisplaySurfaceData(This,pDestination)  \
+#define IDXGIOutput4_GetDisplaySurfaceData(This,pDestination)	\
     ( (This)->lpVtbl -> GetDisplaySurfaceData(This,pDestination) ) 
 
-#define IDXGIOutput4_GetFrameStatistics(This,pStats) \
+#define IDXGIOutput4_GetFrameStatistics(This,pStats)	\
     ( (This)->lpVtbl -> GetFrameStatistics(This,pStats) ) 
 
 
-#define IDXGIOutput4_GetDisplayModeList1(This,EnumFormat,Flags,pNumModes,pDesc)  \
+#define IDXGIOutput4_GetDisplayModeList1(This,EnumFormat,Flags,pNumModes,pDesc)	\
     ( (This)->lpVtbl -> GetDisplayModeList1(This,EnumFormat,Flags,pNumModes,pDesc) ) 
 
-#define IDXGIOutput4_FindClosestMatchingMode1(This,pModeToMatch,pClosestMatch,pConcernedDevice)  \
+#define IDXGIOutput4_FindClosestMatchingMode1(This,pModeToMatch,pClosestMatch,pConcernedDevice)	\
     ( (This)->lpVtbl -> FindClosestMatchingMode1(This,pModeToMatch,pClosestMatch,pConcernedDevice) ) 
 
-#define IDXGIOutput4_GetDisplaySurfaceData1(This,pDestination) \
+#define IDXGIOutput4_GetDisplaySurfaceData1(This,pDestination)	\
     ( (This)->lpVtbl -> GetDisplaySurfaceData1(This,pDestination) ) 
 
-#define IDXGIOutput4_DuplicateOutput(This,pDevice,ppOutputDuplication) \
+#define IDXGIOutput4_DuplicateOutput(This,pDevice,ppOutputDuplication)	\
     ( (This)->lpVtbl -> DuplicateOutput(This,pDevice,ppOutputDuplication) ) 
 
 
-#define IDXGIOutput4_SupportsOverlays(This)  \
+#define IDXGIOutput4_SupportsOverlays(This)	\
     ( (This)->lpVtbl -> SupportsOverlays(This) ) 
 
 
-#define IDXGIOutput4_CheckOverlaySupport(This,EnumFormat,pConcernedDevice,pFlags)  \
+#define IDXGIOutput4_CheckOverlaySupport(This,EnumFormat,pConcernedDevice,pFlags)	\
     ( (This)->lpVtbl -> CheckOverlaySupport(This,EnumFormat,pConcernedDevice,pFlags) ) 
 
 
-#define IDXGIOutput4_CheckOverlayColorSpaceSupport(This,Format,ColorSpace,pConcernedDevice,pFlags) \
+#define IDXGIOutput4_CheckOverlayColorSpaceSupport(This,Format,ColorSpace,pConcernedDevice,pFlags)	\
     ( (This)->lpVtbl -> CheckOverlayColorSpaceSupport(This,Format,ColorSpace,pConcernedDevice,pFlags) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIOutput4_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIOutput4_INTERFACE_DEFINED__ */
 
 
 #ifndef __IDXGIFactory4_INTERFACE_DEFINED__
@@ -875,7 +875,7 @@ EXTERN_C const IID IID_IDXGIFactory4;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIFactory4Vtbl
     {
@@ -1087,105 +1087,105 @@ EXTERN_C const IID IID_IDXGIFactory4;
 #ifdef COBJMACROS
 
 
-#define IDXGIFactory4_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIFactory4_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIFactory4_AddRef(This) \
+#define IDXGIFactory4_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIFactory4_Release(This)  \
+#define IDXGIFactory4_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIFactory4_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIFactory4_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIFactory4_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIFactory4_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIFactory4_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIFactory4_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIFactory4_GetParent(This,riid,ppParent)  \
+#define IDXGIFactory4_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIFactory4_EnumAdapters(This,Adapter,ppAdapter) \
+#define IDXGIFactory4_EnumAdapters(This,Adapter,ppAdapter)	\
     ( (This)->lpVtbl -> EnumAdapters(This,Adapter,ppAdapter) ) 
 
-#define IDXGIFactory4_MakeWindowAssociation(This,WindowHandle,Flags) \
+#define IDXGIFactory4_MakeWindowAssociation(This,WindowHandle,Flags)	\
     ( (This)->lpVtbl -> MakeWindowAssociation(This,WindowHandle,Flags) ) 
 
-#define IDXGIFactory4_GetWindowAssociation(This,pWindowHandle) \
+#define IDXGIFactory4_GetWindowAssociation(This,pWindowHandle)	\
     ( (This)->lpVtbl -> GetWindowAssociation(This,pWindowHandle) ) 
 
-#define IDXGIFactory4_CreateSwapChain(This,pDevice,pDesc,ppSwapChain)  \
+#define IDXGIFactory4_CreateSwapChain(This,pDevice,pDesc,ppSwapChain)	\
     ( (This)->lpVtbl -> CreateSwapChain(This,pDevice,pDesc,ppSwapChain) ) 
 
-#define IDXGIFactory4_CreateSoftwareAdapter(This,Module,ppAdapter) \
+#define IDXGIFactory4_CreateSoftwareAdapter(This,Module,ppAdapter)	\
     ( (This)->lpVtbl -> CreateSoftwareAdapter(This,Module,ppAdapter) ) 
 
 
-#define IDXGIFactory4_EnumAdapters1(This,Adapter,ppAdapter)  \
+#define IDXGIFactory4_EnumAdapters1(This,Adapter,ppAdapter)	\
     ( (This)->lpVtbl -> EnumAdapters1(This,Adapter,ppAdapter) ) 
 
-#define IDXGIFactory4_IsCurrent(This)  \
+#define IDXGIFactory4_IsCurrent(This)	\
     ( (This)->lpVtbl -> IsCurrent(This) ) 
 
 
-#define IDXGIFactory4_IsWindowedStereoEnabled(This)  \
+#define IDXGIFactory4_IsWindowedStereoEnabled(This)	\
     ( (This)->lpVtbl -> IsWindowedStereoEnabled(This) ) 
 
-#define IDXGIFactory4_CreateSwapChainForHwnd(This,pDevice,hWnd,pDesc,pFullscreenDesc,pRestrictToOutput,ppSwapChain)  \
+#define IDXGIFactory4_CreateSwapChainForHwnd(This,pDevice,hWnd,pDesc,pFullscreenDesc,pRestrictToOutput,ppSwapChain)	\
     ( (This)->lpVtbl -> CreateSwapChainForHwnd(This,pDevice,hWnd,pDesc,pFullscreenDesc,pRestrictToOutput,ppSwapChain) ) 
 
-#define IDXGIFactory4_CreateSwapChainForCoreWindow(This,pDevice,pWindow,pDesc,pRestrictToOutput,ppSwapChain) \
+#define IDXGIFactory4_CreateSwapChainForCoreWindow(This,pDevice,pWindow,pDesc,pRestrictToOutput,ppSwapChain)	\
     ( (This)->lpVtbl -> CreateSwapChainForCoreWindow(This,pDevice,pWindow,pDesc,pRestrictToOutput,ppSwapChain) ) 
 
-#define IDXGIFactory4_GetSharedResourceAdapterLuid(This,hResource,pLuid) \
+#define IDXGIFactory4_GetSharedResourceAdapterLuid(This,hResource,pLuid)	\
     ( (This)->lpVtbl -> GetSharedResourceAdapterLuid(This,hResource,pLuid) ) 
 
-#define IDXGIFactory4_RegisterStereoStatusWindow(This,WindowHandle,wMsg,pdwCookie) \
+#define IDXGIFactory4_RegisterStereoStatusWindow(This,WindowHandle,wMsg,pdwCookie)	\
     ( (This)->lpVtbl -> RegisterStereoStatusWindow(This,WindowHandle,wMsg,pdwCookie) ) 
 
-#define IDXGIFactory4_RegisterStereoStatusEvent(This,hEvent,pdwCookie) \
+#define IDXGIFactory4_RegisterStereoStatusEvent(This,hEvent,pdwCookie)	\
     ( (This)->lpVtbl -> RegisterStereoStatusEvent(This,hEvent,pdwCookie) ) 
 
-#define IDXGIFactory4_UnregisterStereoStatus(This,dwCookie)  \
+#define IDXGIFactory4_UnregisterStereoStatus(This,dwCookie)	\
     ( (This)->lpVtbl -> UnregisterStereoStatus(This,dwCookie) ) 
 
-#define IDXGIFactory4_RegisterOcclusionStatusWindow(This,WindowHandle,wMsg,pdwCookie)  \
+#define IDXGIFactory4_RegisterOcclusionStatusWindow(This,WindowHandle,wMsg,pdwCookie)	\
     ( (This)->lpVtbl -> RegisterOcclusionStatusWindow(This,WindowHandle,wMsg,pdwCookie) ) 
 
-#define IDXGIFactory4_RegisterOcclusionStatusEvent(This,hEvent,pdwCookie)  \
+#define IDXGIFactory4_RegisterOcclusionStatusEvent(This,hEvent,pdwCookie)	\
     ( (This)->lpVtbl -> RegisterOcclusionStatusEvent(This,hEvent,pdwCookie) ) 
 
-#define IDXGIFactory4_UnregisterOcclusionStatus(This,dwCookie) \
+#define IDXGIFactory4_UnregisterOcclusionStatus(This,dwCookie)	\
     ( (This)->lpVtbl -> UnregisterOcclusionStatus(This,dwCookie) ) 
 
-#define IDXGIFactory4_CreateSwapChainForComposition(This,pDevice,pDesc,pRestrictToOutput,ppSwapChain)  \
+#define IDXGIFactory4_CreateSwapChainForComposition(This,pDevice,pDesc,pRestrictToOutput,ppSwapChain)	\
     ( (This)->lpVtbl -> CreateSwapChainForComposition(This,pDevice,pDesc,pRestrictToOutput,ppSwapChain) ) 
 
 
-#define IDXGIFactory4_GetCreationFlags(This) \
+#define IDXGIFactory4_GetCreationFlags(This)	\
     ( (This)->lpVtbl -> GetCreationFlags(This) ) 
 
 
-#define IDXGIFactory4_EnumAdapterByLuid(This,AdapterLuid,riid,ppvAdapter)  \
+#define IDXGIFactory4_EnumAdapterByLuid(This,AdapterLuid,riid,ppvAdapter)	\
     ( (This)->lpVtbl -> EnumAdapterByLuid(This,AdapterLuid,riid,ppvAdapter) ) 
 
-#define IDXGIFactory4_EnumWarpAdapter(This,riid,ppvAdapter)  \
+#define IDXGIFactory4_EnumWarpAdapter(This,riid,ppvAdapter)	\
     ( (This)->lpVtbl -> EnumWarpAdapter(This,riid,ppvAdapter) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIFactory4_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIFactory4_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi1_4_0000_0003 */
@@ -1194,9 +1194,9 @@ EXTERN_C const IID IID_IDXGIFactory4;
 typedef 
 enum DXGI_MEMORY_SEGMENT_GROUP
     {
-        DXGI_MEMORY_SEGMENT_GROUP_LOCAL  = 0,
-        DXGI_MEMORY_SEGMENT_GROUP_NON_LOCAL  = 1
-    }  DXGI_MEMORY_SEGMENT_GROUP;
+        DXGI_MEMORY_SEGMENT_GROUP_LOCAL	= 0,
+        DXGI_MEMORY_SEGMENT_GROUP_NON_LOCAL	= 1
+    } 	DXGI_MEMORY_SEGMENT_GROUP;
 
 typedef struct DXGI_QUERY_VIDEO_MEMORY_INFO
     {
@@ -1204,7 +1204,7 @@ typedef struct DXGI_QUERY_VIDEO_MEMORY_INFO
     UINT64 CurrentUsage;
     UINT64 AvailableForReservation;
     UINT64 CurrentReservation;
-    }  DXGI_QUERY_VIDEO_MEMORY_INFO;
+    } 	DXGI_QUERY_VIDEO_MEMORY_INFO;
 
 
 
@@ -1265,7 +1265,7 @@ EXTERN_C const IID IID_IDXGIAdapter3;
     };
     
     
-#else  /* C style interface */
+#else 	/* C style interface */
 
     typedef struct IDXGIAdapter3Vtbl
     {
@@ -1397,74 +1397,74 @@ EXTERN_C const IID IID_IDXGIAdapter3;
 #ifdef COBJMACROS
 
 
-#define IDXGIAdapter3_QueryInterface(This,riid,ppvObject)  \
+#define IDXGIAdapter3_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IDXGIAdapter3_AddRef(This) \
+#define IDXGIAdapter3_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IDXGIAdapter3_Release(This)  \
+#define IDXGIAdapter3_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IDXGIAdapter3_SetPrivateData(This,Name,DataSize,pData) \
+#define IDXGIAdapter3_SetPrivateData(This,Name,DataSize,pData)	\
     ( (This)->lpVtbl -> SetPrivateData(This,Name,DataSize,pData) ) 
 
-#define IDXGIAdapter3_SetPrivateDataInterface(This,Name,pUnknown)  \
+#define IDXGIAdapter3_SetPrivateDataInterface(This,Name,pUnknown)	\
     ( (This)->lpVtbl -> SetPrivateDataInterface(This,Name,pUnknown) ) 
 
-#define IDXGIAdapter3_GetPrivateData(This,Name,pDataSize,pData)  \
+#define IDXGIAdapter3_GetPrivateData(This,Name,pDataSize,pData)	\
     ( (This)->lpVtbl -> GetPrivateData(This,Name,pDataSize,pData) ) 
 
-#define IDXGIAdapter3_GetParent(This,riid,ppParent)  \
+#define IDXGIAdapter3_GetParent(This,riid,ppParent)	\
     ( (This)->lpVtbl -> GetParent(This,riid,ppParent) ) 
 
 
-#define IDXGIAdapter3_EnumOutputs(This,Output,ppOutput)  \
+#define IDXGIAdapter3_EnumOutputs(This,Output,ppOutput)	\
     ( (This)->lpVtbl -> EnumOutputs(This,Output,ppOutput) ) 
 
-#define IDXGIAdapter3_GetDesc(This,pDesc)  \
+#define IDXGIAdapter3_GetDesc(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc(This,pDesc) ) 
 
-#define IDXGIAdapter3_CheckInterfaceSupport(This,InterfaceName,pUMDVersion)  \
+#define IDXGIAdapter3_CheckInterfaceSupport(This,InterfaceName,pUMDVersion)	\
     ( (This)->lpVtbl -> CheckInterfaceSupport(This,InterfaceName,pUMDVersion) ) 
 
 
-#define IDXGIAdapter3_GetDesc1(This,pDesc) \
+#define IDXGIAdapter3_GetDesc1(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc1(This,pDesc) ) 
 
 
-#define IDXGIAdapter3_GetDesc2(This,pDesc) \
+#define IDXGIAdapter3_GetDesc2(This,pDesc)	\
     ( (This)->lpVtbl -> GetDesc2(This,pDesc) ) 
 
 
-#define IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent(This,hEvent,pdwCookie)  \
+#define IDXGIAdapter3_RegisterHardwareContentProtectionTeardownStatusEvent(This,hEvent,pdwCookie)	\
     ( (This)->lpVtbl -> RegisterHardwareContentProtectionTeardownStatusEvent(This,hEvent,pdwCookie) ) 
 
-#define IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus(This,dwCookie) \
+#define IDXGIAdapter3_UnregisterHardwareContentProtectionTeardownStatus(This,dwCookie)	\
     ( (This)->lpVtbl -> UnregisterHardwareContentProtectionTeardownStatus(This,dwCookie) ) 
 
-#define IDXGIAdapter3_QueryVideoMemoryInfo(This,NodeIndex,MemorySegmentGroup,pVideoMemoryInfo) \
+#define IDXGIAdapter3_QueryVideoMemoryInfo(This,NodeIndex,MemorySegmentGroup,pVideoMemoryInfo)	\
     ( (This)->lpVtbl -> QueryVideoMemoryInfo(This,NodeIndex,MemorySegmentGroup,pVideoMemoryInfo) ) 
 
-#define IDXGIAdapter3_SetVideoMemoryReservation(This,NodeIndex,MemorySegmentGroup,Reservation) \
+#define IDXGIAdapter3_SetVideoMemoryReservation(This,NodeIndex,MemorySegmentGroup,Reservation)	\
     ( (This)->lpVtbl -> SetVideoMemoryReservation(This,NodeIndex,MemorySegmentGroup,Reservation) ) 
 
-#define IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent(This,hEvent,pdwCookie)  \
+#define IDXGIAdapter3_RegisterVideoMemoryBudgetChangeNotificationEvent(This,hEvent,pdwCookie)	\
     ( (This)->lpVtbl -> RegisterVideoMemoryBudgetChangeNotificationEvent(This,hEvent,pdwCookie) ) 
 
-#define IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification(This,dwCookie) \
+#define IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotification(This,dwCookie)	\
     ( (This)->lpVtbl -> UnregisterVideoMemoryBudgetChangeNotification(This,dwCookie) ) 
 
 #endif /* COBJMACROS */
 
 
-#endif   /* C style interface */
+#endif 	/* C style interface */
 
 
 
 
-#endif   /* __IDXGIAdapter3_INTERFACE_DEFINED__ */
+#endif 	/* __IDXGIAdapter3_INTERFACE_DEFINED__ */
 
 
 /* interface __MIDL_itf_dxgi1_4_0000_0004 */
