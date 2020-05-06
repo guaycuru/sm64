@@ -3,6 +3,8 @@
 // this file must include some globally referenced data because it is not called anywhere
 // data, comes shortly before _Ldtob I think, before crash_screen
 
+#ifdef TARGET_N64
+
 extern OSPiHandle *D_80302DFC;
 // bss
 OSPiHandle LeoDiskHandle;
@@ -28,3 +30,5 @@ OSPiHandle *osLeoDiskInit() {
     __osRestoreInt(sp1c);
     return &LeoDiskHandle;
 }
+
+#endif

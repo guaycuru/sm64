@@ -1,5 +1,7 @@
 #include "new_func.h"
 
+#ifdef TARGET_N64
+
 void func_802F4A20() {
     __OSTranxInfo *sp1c;
     volatile u32 sp18;
@@ -168,3 +170,6 @@ void func_802F4B08() {
     //  nop
     //  nop
 }
+
+#endif
+

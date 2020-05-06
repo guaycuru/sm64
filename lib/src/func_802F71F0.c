@@ -1,5 +1,7 @@
 #include "libultra_internal.h"
 
+#ifdef TARGET_N64
+
 void func_802F71F0() {
     register u32 s0 = __osDisableInt();
     D_803348A0->state = OS_STATE_RUNNABLE;
@@ -29,3 +31,5 @@ void func_802F71F0() {
 / 0B6A38 802F7238 00000000 /   nop
 
 / 0B6A3C 802F723C 00000000 /  nop   */
+
+#endif

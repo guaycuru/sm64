@@ -1,4 +1,7 @@
 #include "libultra_internal.h"
+
+#ifdef TARGET_N64
+
 extern u32 D_8030208C;
 void func_802F7140(u32 a0) {
     register u32 s0;
@@ -29,3 +32,5 @@ void func_802F7140(u32 a0) {
 / 0B698C 802F718C 27BD0028 /  addiu $sp, $sp, 0x28
 / 0B6990 802F7190 03E00008 /  jr    $ra
 / 0B6994 802F7194 00000000 /   nop   */
+
+#endif
